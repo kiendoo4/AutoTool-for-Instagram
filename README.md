@@ -1,6 +1,6 @@
 # Lập trình trực quan - IT008.O14
 
-`Với sự tham gia của:`
+`Gồm các thành viên:`
 
 `21521024 - Nguyễn Trung Kiên`	
 
