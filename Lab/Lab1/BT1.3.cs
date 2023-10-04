@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-class BT1.3
+class Program
 {
     private static Random rand = new Random();
     static T FindMin<T>(T[] arr) where T : IComparable<T>
@@ -59,8 +59,8 @@ class BT1.3
         string[] stringArr = new string[n];
         for (int i = 0; i < n; i++)
         {
-            intArr[i] = rand.Next(0, 100);
-            doubleArr[i] = rand.NextDouble() * 10;
+            intArr[i] = rand.Next(-50, 50);
+            doubleArr[i] = rand.NextDouble() * 20 - 10;
             stringArr[i] = RandomString(rand.Next(1, 10));
         }
 
