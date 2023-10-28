@@ -1,0 +1,10 @@
+C:\Users\PHAT PC\source\repos\Lab2\BT2.5\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\PHAT PC\source\repos\Lab2\BT2.5\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\PHAT PC\source\repos\Lab2\BT2.5\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\PHAT PC\source\repos\Lab2\BT2.5\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\PHAT PC\source\repos\Lab2\BT2.5\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\PHAT PC\source\repos\Lab2\BT2.5\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\PHAT PC\source\repos\Lab2\BT2.5\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\PHAT PC\source\repos\Lab2\BT2.5\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\PHAT PC\source\repos\Lab2\BT2.5\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\PHAT PC\source\repos\Lab2\BT2.5\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
