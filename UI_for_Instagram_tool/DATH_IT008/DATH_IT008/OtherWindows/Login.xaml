@@ -1,0 +1,295 @@
+﻿<Window x:Class="DATH_IT008.OtherWindows.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DATH_IT008.OtherWindows"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent" 
+        Height="500" Width="1000">
+    <Grid>
+        <Border Background="#F8F7F8" CornerRadius="30" BorderThickness="1" BorderBrush="Gray">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="\Image\icons8-insta-500.png" Margin="32,60,66,34"></Image>
+                    <TextBlock Text="Phần mềm tự động"
+                               HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Paytone One"
+                               FontSize="21" Margin="181,404,0,0" Grid.RowSpan="2"/>
+                    <TextBlock Grid.Row="1" Text="các chức năng trên Instagram"
+                               HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Paytone One"
+                               FontSize="21" Margin="125,16,0,0"/>
+                    <Label Grid.Row="1" FontSize="15" FontFamily="Quicksand Semibold"
+                                           Content="From Việt, An, Kiên, Phát with luv - IT008" Margin="130,44,162,9" RenderTransformOrigin="0.5,0.5" >
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleX="0.809"/>
+                                <RotateTransform/>
+                                <TranslateTransform X="0.586"/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,33,0" Height="52" VerticalAlignment="Bottom">
+                        <Button Click="HideClick" Height="auto" Background="Transparent" BorderThickness="0" Width="30">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Ellipse Width="20" Height="20" Fill ="Green" Margin="0 0 10 0">
+                                    </Ellipse>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Click="CloseClick" Height="auto" Width="auto" Background="Transparent" BorderThickness="0">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Ellipse Width="20" Height="20" Fill="Red" Margin="0 0 10 0">
+                                    </Ellipse>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                    <Border Grid.Row="1" Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="0.5" Margin="10,10,31,32">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.2*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="0.5*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Đăng nhập tài khoản "
+                               HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Paytone One"
+                               FontSize="21" Margin="20,17,0,0"/>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="0.5*"></RowDefinition>
+                                    <RowDefinition Height="5*"></RowDefinition>
+                                    <RowDefinition Height="5*"></RowDefinition>
+                                    <RowDefinition Height="2*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="1">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10,0,0,0">
+                                            <Label Content="Tài khoản" FontSize="17" FontFamily="Quicksand Semibold" VerticalAlignment="Center" />
+                                            <TextBox Name ="Username"  FontSize="17" FontFamily="Quicksand Semibold" Height="29" Width="244"/>
+                                        </StackPanel>
+                                        <!--<Grid Grid.Row="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width ="0.6*"></ColumnDefinition>
+                                                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                                                <ColumnDefinition Width ="1.5*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Content="hoặc" FontSize="17" FontFamily="Quicksand Semibold" VerticalAlignment="Center" Margin="12,0,11,0" />
+                                            <Button HorizontalAlignment="Left" Width="140" Height="37" VerticalAlignment="Top" Cursor="Hand" Click="ChooseAccountClick" Grid.ColumnSpan="3" Margin="71,6,0,0">
+
+                                                <Button.Template>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border CornerRadius="10" BorderThickness="0">
+                                                            <Border.Style>
+                                                                <Style TargetType="Border">
+                                                                    <Setter Property="Background" Value="Transparent"/>
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                                            <Setter Property="Background" Value="#522c53"/>
+                                                                        </Trigger>
+                                                                        <Trigger Property="IsMouseOver" Value="False">
+                                                                            <Setter Property="Background" Value="Purple"/>
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <Grid>
+                                                                <TextBlock Grid.Column="1" Text="Chọn file txt"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0">
+                                                                </TextBlock>
+                                                            </Grid>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Button.Template>
+                                            </Button>
+                                            <Label Grid.Column="2" Content="chứa tài khoản" FontSize="17" FontFamily="Quicksand Semibold" VerticalAlignment="Center" Margin="48,0,14,0" />
+                                        </Grid>-->
+                                        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10,0,0,0">
+                                            <Label Content="Mật khẩu" FontSize="17" FontFamily="Quicksand Semibold" VerticalAlignment="Center" />
+                                            <PasswordBox Name ="Password"  FontSize="17" FontFamily="Quicksand Semibold" Height="29" Width="244"/>
+                                        </StackPanel>
+                                    </Grid>
+
+                                </Border>
+                                <Border Grid.Row="2">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <!--<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10,0,0,0">
+                                            <Label Content="Mật khẩu" FontSize="17" FontFamily="Quicksand Semibold" VerticalAlignment="Center" />
+                                            <PasswordBox Name ="Password"  FontSize="17" FontFamily="Quicksand Semibold" Height="29" Width="244"/>
+                                        </StackPanel>-->
+                                        <Grid Grid.Row="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width ="0.6*"></ColumnDefinition>
+                                                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                                                <ColumnDefinition Width ="1.5*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Content="hoặc" FontSize="17" FontFamily="Quicksand Semibold" VerticalAlignment="Center" Margin="12,0,11,0" />
+                                            <Button HorizontalAlignment="Left" Width="140" Cursor="Hand" Click="ChooseAccountClick" Grid.ColumnSpan="3" Margin="71,6,0,0" Height="37" VerticalAlignment="Top">
+
+                                                <Button.Template>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border CornerRadius="10" BorderThickness="0">
+                                                            <Border.Style>
+                                                                <Style TargetType="Border">
+                                                                    <Setter Property="Background" Value="Transparent"/>
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                                            <Setter Property="Background" Value="#522c53"/>
+                                                                        </Trigger>
+                                                                        <Trigger Property="IsMouseOver" Value="False">
+                                                                            <Setter Property="Background" Value="Purple"/>
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Border.Style>
+                                                            <Grid>
+                                                                <TextBlock Grid.Column="1" Text="Chọn file excel"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0">
+                                                                </TextBlock>
+                                                            </Grid>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Button.Template>
+                                            </Button>
+                                            <Label Grid.Column="2" Content="chứa tài khoản" FontSize="17" FontFamily="Quicksand Semibold" VerticalAlignment="Center" Margin="48,0,14,0" />
+                                        </Grid>
+                                        <Grid Grid.Row="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width ="0.6*"></ColumnDefinition>
+                                                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                                                <ColumnDefinition Width ="1.5*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Content="và mật khẩu" FontSize="17" FontFamily="Quicksand Semibold" VerticalAlignment="Top" Margin="12,6,10,0" Grid.ColumnSpan="2" />
+                                        </Grid>
+                                    </Grid>
+
+                                </Border>
+                                <Button Grid.Row="3" HorizontalAlignment="Left" Width="140" Height="37" VerticalAlignment="Bottom" Cursor="Hand" Margin="205,0,0,1" Click="LoginClick">
+
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border CornerRadius="10" BorderThickness="0">
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Background" Value="#522c53"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsMouseOver" Value="False">
+                                                                <Setter Property="Background" Value="Purple"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Border.Style>
+                                                <Grid>
+                                                    <TextBlock Grid.Column="1" Text="Đăng nhập"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0">
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <!--<Button Grid.Row="3" HorizontalAlignment="Left" Width="140" Height="37" VerticalAlignment="Center" Cursor="Hand" Margin="10,0,0,0" Click="EnableClick">
+
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border CornerRadius="10" BorderThickness="0">
+                                                <Border.Style>
+                                                    <Style TargetType="{x:Type Border}">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter Property="Background" Value="#522c53"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsMouseOver" Value="False">
+                                                                <Setter Property="Background" Value="Purple"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Border.Style>
+                                                <Grid>
+                                                    <TextBlock Grid.Column="1" Text="Enable box"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0"/>
+                                                </Grid>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>-->
+
+                            </Grid>
+                            <Label Grid.Row="2" FontSize="15" FontFamily="Quicksand Semibold"
+                                           Content="Chú ý: Chúng tôi chỉ sử dụng tài khoản" 
+                                        Margin="10,9,10,38">
+                            </Label>
+                            <Label Grid.Row="2" FontSize="15" FontFamily="Quicksand Semibold"
+                                           Content="của bạn để truy cập vào Instagram, không" 
+                                        Margin="10,35,10,10">
+                            </Label>
+                            <Label Grid.Row="2" FontSize="15" FontFamily="Quicksand Semibold"
+                                           Content="hề lưu bất kì thông tin tài khoản nào, hãy" 
+                                        Margin="10,61,10,21" Grid.RowSpan="2">
+                            </Label>
+                            <Label Grid.Row="2" FontSize="15" FontFamily="Quicksand Semibold"
+                                           Content="chọn file txt khi cần đăng nhập nhiều account" 
+                                        Margin="10,87,10,0"/>
+                            <!--<Label FontSize="15" FontFamily="Quicksand Semibold" Grid.Row="2" Content="Chưa có tài khoản Instagram? Bấm vào nút"  VerticalAlignment="Top" Margin="10,0,0,0" ></Label>
+                            <Label FontSize="15" FontFamily="Quicksand Semibold" Grid.Row="2" Content="'đăng ký' bên phải" VerticalAlignment="Center" Margin="10,0,-10,0"/>
+                            <Button Grid.Row="2" HorizontalAlignment="Left" Width="104" Height="37" VerticalAlignment="Top" Cursor="Hand" Margin="239,33,0,0" Click="RegistrationClick">
+
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border CornerRadius="10" BorderThickness="0">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="Background" Value="Transparent"/>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="#522c53"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsMouseOver" Value="False">
+                                                            <Setter Property="Background" Value="Purple"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <Grid>
+                                                <TextBlock Grid.Column="1" Text="Đăng ký"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0">
+                                                </TextBlock>
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>-->
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+
+        </Border>
+    </Grid>
+</Window>
