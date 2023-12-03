@@ -1,0 +1,30 @@
+﻿<Window x:Class="Instagram_tool.Liketool"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Instagram_tool"
+        mc:Ignorable="d"
+        Title="Liketool" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <TextBlock Name="tbl_available">Số lượng post có sẵn từ username: 0</TextBlock>
+            <TextBlock>Số lượng bài post cần like/unlike:</TextBlock>
+            <TextBox Name="tbx_num_posts">0</TextBox>
+            <RadioButton>All</RadioButton>
+            <TextBlock>Cụ thể: (không cần nhập các thông tin trên)</TextBlock>
+            <TextBox Height="100" AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Visible"
+                     Name="tbx_posts">
+            </TextBox>
+            <Button Name="btn_like" 
+                    Click="btn_like_Click">
+                Like
+            </Button>
+            <Button Name="btn_unlike" 
+                    Click="btn_unlike_Click">
+                Unlike
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

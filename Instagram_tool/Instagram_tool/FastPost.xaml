@@ -1,0 +1,46 @@
+﻿<Window x:Class="Instagram_tool.FastPost"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Instagram_tool"
+        mc:Ignorable="d"
+        Title="FastPost (not TimerPost :D )" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Nhập đường dẫn thư mục chứa các file cần post:"></TextBlock>
+                <TextBox Name="tbx_path" Width="500" Margin="10, 0, 0, 0">
+                    D:\vs\Instagram_tool\Instagram_tool\upload\
+                </TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="15" Text="Đăng một hay nhiều bài?"></TextBlock>
+                <RadioButton Name="rad_invidual" 
+                             GroupName="grp_rad_opposts" 
+                             Checked="rad_invidual_Checked"
+                             Margin="20, 0, 0, 0"
+                             VerticalAlignment="Center"
+                             Content="Individual">
+                    <RadioButton.LayoutTransform>
+                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"></ScaleTransform>
+                    </RadioButton.LayoutTransform>
+                </RadioButton>
+                <RadioButton Name="rad_multiple" 
+                             GroupName="grp_rad_opposts"
+                             Checked="rad_multiple_Checked"
+                             Margin="20, 0, 0, 0"
+                             VerticalAlignment="Center"
+                             Content="Multiple">
+                    <RadioButton.LayoutTransform>
+                        <ScaleTransform ScaleX="1.2" ScaleY="1.2"></ScaleTransform>
+                    </RadioButton.LayoutTransform>
+                </RadioButton>
+            </StackPanel>
+            <Frame Name="frame_FastPost" 
+                   Loaded="frame_FastPost_Loaded"
+                   NavigationUIVisibility="Hidden" Height="396" Width="800">
+            </Frame>
+        </StackPanel>
+    </Grid>
+</Window>
