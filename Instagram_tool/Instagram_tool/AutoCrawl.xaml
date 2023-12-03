@@ -1,0 +1,21 @@
+﻿<Window x:Class="InstaCrawl.AutoCrawl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InstaCrawl"
+        mc:Ignorable="d"
+        Title="AutoCrawl" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="tbUsername" HorizontalAlignment="Left" Margin="147,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="32"/>
+        <PasswordBox x:Name="pbPassword" HorizontalAlignment="Left" Margin="147,143,0,0" VerticalAlignment="Top" Width="201" Height="32"/>
+        <TextBox x:Name="tbSearchTarget" HorizontalAlignment="Left" Margin="147,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="32"/>
+        <TextBlock HorizontalAlignment="Left" Margin="40,70,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="40,146,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="40,220,0,0" TextWrapping="Wrap" Text="Search target" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbQuantity" HorizontalAlignment="Left" Margin="147,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="32"/>
+        <TextBlock HorizontalAlignment="Left" Margin="40,295,0,0" TextWrapping="Wrap" Text="Quantity" VerticalAlignment="Top"/>
+        <Button Content="Start" Margin="0,0,85,58" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="114" Click="Button_Click"/>
+
+    </Grid>
+</Window>
