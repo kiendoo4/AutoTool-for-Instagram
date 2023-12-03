@@ -14,9 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
 using System.IO;
 using System.Threading;
+using SeleniumExtras.WaitHelpers;
+using OpenQA.Selenium.Interactions;
 using System.Net;
 
 namespace InstaCrawl
@@ -30,26 +32,27 @@ namespace InstaCrawl
         public MainWindow()
         {
             InitializeComponent();
-            login(ref driver, "altriatheclown", "12345678abc"); //Nhap account, co the truyen tham so khac
-            search(ref driver, "thiziz"); //search user voi keyword cho truoc
-            crawl(ref driver, "Test", 50);
+            login(ref driver, "an.yeager.48", "balancebreaker01"); //Nhap account, co the truyen tham so khac
+            search(ref driver, "dashataraan"); //search user voi keyword cho truoc
+            crawl(ref driver, "taraan", 10);
         }
 
         private void login(ref ChromeDriver driver, string username, string password)
         {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             driver.Url = "https://www.instagram.com/";
             driver.Navigate();
-            Thread.Sleep(1000);
             try
             {
-                IWebElement form = driver.FindElement(By.TagName("form"));
-                Thread.Sleep(150);
+                Random random = new Random();
+                IWebElement form = wait.Until(ExpectedConditions.ElementIsVisible(By.TagName("form")));
+                Thread.Sleep(100);
                 List<IWebElement> login = form.FindElements(By.TagName("input")).ToList();
-                Thread.Sleep(150);
+                Thread.Sleep(100);
                 login[0].SendKeys(username);
-                Thread.Sleep(150);
+                Thread.Sleep(random.Next(100, 150));
                 login[1].SendKeys(password);
-                Thread.Sleep(150);
+                Thread.Sleep(random.Next(100, 150));
                 List<IWebElement> buttons = form.FindElements(By.TagName("button")).ToList();
                 foreach (IWebElement button in buttons)
                 {
@@ -68,14 +71,17 @@ namespace InstaCrawl
 
         private void search(ref ChromeDriver driver, string seachStr)
         {
-            //Chờ web đã đăng nhập
-            while (driver.FindElement(By.TagName("html")).GetAttribute("class").Contains("_aa4c"))
+            //Chờ page load data
+            while (true)
             {
-                Thread.Sleep(500);
+                IWebElement check = driver.FindElement(By.TagName("html"));
+                if (check.GetAttribute("class").Contains("_aa4c")) Thread.Sleep(500);
+                else break;
             }
             //Mở thanh seach
             try
             {
+                Thread.Sleep(200);
                 IWebElement body = driver.FindElement(By.TagName("body"));
                 Thread.Sleep(200);
                 List<IWebElement> svg = body.FindElements(By.TagName("svg")).ToList();
@@ -103,12 +109,12 @@ namespace InstaCrawl
                 IWebElement search = body.FindElement(By.TagName("input"));
                 Thread.Sleep(50);
                 search.SendKeys(seachStr + "\n");
-                Thread.Sleep(700);
+                Thread.Sleep(1500);
                 IWebElement elder = body.FindElement(By.XPath(".//div[2]/div/div/div[@class='x9f619 x1n2onr6 x1ja2u2z']"));
                 Thread.Sleep(50);
-                IWebElement grand = elder.FindElement(By.XPath(".//div/div/div/div/div[1]"));
+                IWebElement grand = elder.FindElement(By.XPath(".//div/div/div[1]/div[1]/div[1]"));
                 Thread.Sleep(50);
-                grand = grand.FindElement(By.XPath(".//div[1]/div/div"));
+                grand = grand.FindElement(By.XPath(".//div/div"));
                 Thread.Sleep(50);
                 grand = grand.FindElement(By.XPath(".//div[@class='x10l6tqk x1u3tz30 x1ja2u2z']/div/div"));
                 Thread.Sleep(50);
@@ -127,6 +133,7 @@ namespace InstaCrawl
 
         private void crawl(ref ChromeDriver driver, string target, int quantity)
         {
+            //Kiểm tra đối tượng đã được crawl chưa
             string path = $".\\downloaded\\{target}";
             if (Directory.Exists(path))
             {
@@ -137,55 +144,118 @@ namespace InstaCrawl
             {
                 Directory.CreateDirectory(path);
             }
+            //wait for user info loading
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            IWebElement check = wait.Until(ExpectedConditions.ElementIsVisible(By.TagName("article")));
+            Thread.Sleep(100);
+            //Lấy số lượng bài tối đa
+            IWebElement post = driver.FindElement(By.TagName("main"));
+            post = post.FindElement(By.XPath(".//div/header/section/ul/li[1]/span/span"));
+            int maxQuantity = Convert.ToInt32(post.GetAttribute("innerText"));
+            //Lấy url của bài viết
+            HashSet<string> urlBag = new HashSet<string>();
             try
             {
-                //wait for user info loading
-                Thread.Sleep(5000);
-                HashSet<string> urlBag = new HashSet<string>();
-
                 IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-
-                long lastHeight = (long)js.ExecuteScript("return document.body.scrollHeight;");
 
                 while (true)
                 {
                     // Cuộn xuống cuối trang
                     js.ExecuteScript("window.scrollTo(0, document.body.scrollHeight);");
                     // Chờ một khoảng thời gian ngắn để trang web tải dữ liệu mới
-                    System.Threading.Thread.Sleep(1500); //co the can tang thoi gian cho neu mang cham
+                    System.Threading.Thread.Sleep(1000);
                     //lay cac element chua anh--------------------------------------------------
                     IWebElement article = driver.FindElement(By.TagName("article"));
                     Thread.Sleep(50);
-                    List<IWebElement> img = article.FindElements(By.XPath(".//div[@class='_ac7v  _al3n']/div[@class='_aabd _aa8k  _al3l']/a/div/div/img")).ToList();
-                    for (int i = 0; i < img.Count; i++)
+                    List<IWebElement> href = article.FindElements(By.XPath(".//div[@class='_ac7v  _al3n']/div[@class='_aabd _aa8k  _al3l']/a")).ToList(); 
+                    for (int i = 0; i < href.Count; i++)
                     {
-                        string imageUrl = img[i].GetAttribute("src");
-                        urlBag.Add(imageUrl);
+                        string postUrl = href[i].GetAttribute("href");
+                        urlBag.Add(postUrl);
                         Thread.Sleep(50);
                     }
-                    //Lấy chiều cao mới của trang-----------------------------------------------
-                    long newHeight = (long)js.ExecuteScript("return document.body.scrollHeight;");
+                    // Kiểm tra nếu đã đủ số ảnh yêu cầu
+                    if (urlBag.Count > quantity) break;
                     // Kiểm tra xem đã đến cuối trang hay chưa
-                    if (newHeight == lastHeight) break;
-                    lastHeight = newHeight;
+                    if (urlBag.Count >= maxQuantity) break;
                 }
-                //download----------------------------------------------------------------------
-                int count = 1;
-                foreach (string url in urlBag)
-                {
-                    string localPath = $".\\downloaded\\{target}\\image{(count++).ToString()}.png";
-                    using (WebClient webClient = new WebClient())
-                    {
-                        webClient.DownloadFile(url, localPath);
-                    }
-                    Thread.Sleep(50);
-                }
-                MessageBox.Show("Done crawling");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            //Crawl ảnh và comment
+            try
+            {
+                int count = 1;
+                foreach (string url in urlBag)
+                {
+                    IJavaScriptExecutor jsExecutor = (IJavaScriptExecutor)driver;
+                    jsExecutor.ExecuteScript($"window.open('{url}', '_blank');");
+                    driver.SwitchTo().Window(driver.WindowHandles[1]);
+                    //Chờ element chứa bài viết đã load xong
+                    WebDriverWait localWait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                    IWebElement main = wait.Until(ExpectedConditions.ElementIsVisible(By.TagName("main")));
+                    Thread.Sleep(50);
+                    main = main.FindElement(By.XPath(".//div/div[1]/div"));
+                    //Img crawling-----------------------------------
+                    IWebElement img = main.FindElement(By.XPath(".//div[1]/div/div/div/div"));
+                    List<IWebElement> imgBag = img.FindElements(By.TagName("img")).ToList();
+                    string imageUrl = imgBag[0].GetAttribute("src");
+                    string localPath = $".\\downloaded\\{target}\\image{(count).ToString()}.png";
+                    using (WebClient webClient = new WebClient())
+                    {
+                        webClient.DownloadFile(imageUrl, localPath);
+                    }
+                    Thread.Sleep(50);
+                    //Cmt crawling-----------------------------------
+                    IWebElement frame = main.FindElement(By.XPath(".//div[2]/div/div[2]/div"));
+                    List<IWebElement> cmtList = main.FindElements(By.XPath(".//div[2]/div/div[2]/div/div[@class='x78zum5 xdt5ytf x1iyjqo2']/div[@class='x9f619 xjbqb8w x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1']")).ToList();
+                    int cmtCount = cmtList.Count;
+                    //int flag = 0;
+                    //while (true)
+                    //{
+                    //    Actions actions = new Actions(driver);
+                    //    actions.ScrollToElement(frame).MoveToElement(frame, frame.Size.Width - 5, frame.Size.Height - 5).Click().SendKeys(Keys.ArrowDown).Perform();
+                    //    Thread.Sleep(100);
+                    //    cmtList = main.FindElements(By.XPath(".//div[2]/div/div[2]/div/div[@class='x78zum5 xdt5ytf x1iyjqo2']/div[@class='x9f619 xjbqb8w x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1']")).ToList();
+                    //    cmtCount = cmtList.Count;
+                    //    if (cmtCount == cmtList.Count) flag++;
+                    //    else flag = 0;
+                    //    if (flag == 50) break;
+                    //    if (cmtCount > 20) break;
+                    //}
+                    for (int i = 0; i < Math.Min(20, cmtCount); i++)
+                    {
+                        try
+                        {
+                            cmtList[i] = cmtList[i].FindElement(By.XPath(".//div/div/div[2]/div[1]/div[1]/div/div[2]/span"));
+                        }
+                        catch
+                        {
+                            Thread.Sleep(50);
+                            continue;
+                        }
+                        string filePath = $".\\downloaded\\{target}\\post{(count).ToString()}.txt";
+                        File.AppendAllText(filePath, (cmtList[i].GetAttribute("innerText") + "\n"));
+                        Thread.Sleep(50);
+                    }
+                    //-----------------------------------------------
+                    driver.Close();
+
+                    driver.SwitchTo().Window(driver.WindowHandles[0]);
+
+                    count++;
+                    if (count > quantity) break;
+
+                    Thread.Sleep(50);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            MessageBox.Show("Done crawling");
         }
     }
 }
