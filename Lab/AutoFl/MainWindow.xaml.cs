@@ -14,6 +14,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.DevTools.V117.Profiler;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
 
 namespace Selenium1
 {
@@ -113,21 +114,19 @@ namespace Selenium1
 
 
                 Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+
+                var a = driver.FindElement(By.XPath("//button[contains(@class,'_acan _acap _acat _aj1- _ap30')]"));
                 try
                 {
-                    var button = driver.FindElement(By.XPath("//button[contains(@class,'_acan _acap _acat _aj1- _ap30')]"));
-
-                    if (button != null)
+                    if(a!= null)
                     {
-                        button.Click();
-                        Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
-                        var unfl = driver.FindElement(By.XPath("");
-                        Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
-                    }
-                }
-                catch (Exception ex)
-                {
-                }
+                        a.Click();
+                        Thread.Sleep(3000);
+                        a = driver.FindElement(By.XPath("//span[contains(text(),'Unfollow')]"));
+                        a.Click();
+                    }    
+                }catch (Exception ex) { }
+                
 
             }
         }
