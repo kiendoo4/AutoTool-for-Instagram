@@ -50,12 +50,17 @@ namespace Selenium1
 
 
                 Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                try
+                {
+                    var button = driver.FindElement(By.CssSelector("button[class=' _acan _acap _acas _aj1- _ap30']"));
 
-
-                var button = driver.FindElement(By.CssSelector("button[class=' _acan _acap _acas _aj1- _ap30']"));
-
-                button.Click();
-
+                    if (button != null)
+                    {
+                        button.Click();
+                    }
+                } catch (Exception ex) { 
+                }
+                
             }
 
 
@@ -83,6 +88,48 @@ namespace Selenium1
             
             
             
+        }
+
+        private void BtnClickunfl(object sender, RoutedEventArgs e)
+        {
+            ChromeDriverService chromeDriverService = ChromeDriverService.CreateDefaultService();
+            chromeDriverService.HideCommandPromptWindow = true;
+
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.AddArgument("--user-data-dir=C:\\Users\\PHAT PC\\AppData\\Local\\Google\\Chrome\\User Data\\");
+            chromeOptions.AddArgument("--profile-directory=Profile 3");
+
+            var driver = new ChromeDriver(chromeDriverService, chromeOptions);
+
+            driver.Navigate().GoToUrl("https://www.instagram.com/");
+
+
+            var usernamesToFollow = File.ReadAllLines("usernames.txt");
+
+            foreach (var username in usernamesToFollow)
+            {
+
+                driver.Navigate().GoToUrl($"https://www.instagram.com/{username}/");
+
+
+                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                try
+                {
+                    var button = driver.FindElement(By.XPath("//button[contains(@class,'_acan _acap _acat _aj1- _ap30')]"));
+
+                    if (button != null)
+                    {
+                        button.Click();
+                        Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                        var unfl = driver.FindElement(By.XPath("");
+                        Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+
+            }
         }
     }
 }
