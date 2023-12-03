@@ -110,6 +110,7 @@ namespace DATH_IT008.OtherWindows
             }
             else
             {
+                
                 bool check_open = false;
                 for(int i = 0; i < acc_username.Count; i++)
                 {
@@ -138,6 +139,8 @@ namespace DATH_IT008.OtherWindows
 
         private void ChooseAccountClick(object sender, RoutedEventArgs e)
         {
+            acc_username = new List<string>();
+            acc_password = new List<string>();
             Username.IsEnabled = false;
             Password.IsEnabled = false;
             OpenFileDialog openFileDialog = new OpenFileDialog();
