@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Instagram_tool"
       mc:Ignorable="d" 
-      d:DesignHeight="395" d:DesignWidth="800"
+      d:DesignHeight="370" d:DesignWidth="800"
       Title="FastPost_multiple">
 
     <Grid Background="White">
@@ -24,7 +24,7 @@
         </TextBlock>
         <StackPanel Grid.Row="1" Grid.Column="0">
             <StackPanel Orientation="Horizontal">
-                <CheckBox></CheckBox>
+                <CheckBox Name="chk_code_multisingle"></CheckBox>
                 <TextBlock>
                     Use the code like FastPost_indv_multi.txt (except index_account)
                 </TextBlock>
@@ -62,55 +62,40 @@
             <TextBlock FontSize="14"
                        FontWeight="Bold"
                        Text="- Optional"></TextBlock>
+            <TextBlock>(This is for all posts, if you want to customize posts, use the code)</TextBlock>
             <StackPanel Orientation="Horizontal">
                 <CheckBox Name="chk_hidelike">
                 </CheckBox>
                 <TextBlock Margin="10, 0, 0, 0"
-                           Text="Ẩn số lượt like và views:"></TextBlock>
-                <TextBox Margin="10, 0, 0, 0"
-                         Width="150"></TextBox>
+                           Text="Ẩn số lượt like và views"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <CheckBox Name="chk_turnoffcmt"></CheckBox>
                 <TextBlock Margin="10, 0, 0, 0"
-                           Text="Tắt tính năng bình luận:"></TextBlock>
-                <TextBox Margin="10, 0, 0, 0"
-                         Width="150"></TextBox>
+                           Text="Tắt tính năng bình luận"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <CheckBox Name="chk_rndcap"></CheckBox>
                 <TextBlock Margin="10, 0, 0, 0"
                            Text="Dùng caption ngẫu nhiên trong file captions.txt "></TextBlock>
             </StackPanel>
-            <TextBox Margin="0, 0, 0, 0"
-                     Width="150"></TextBox>
-            <TextBlock FontSize="14"
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="14"
                        FontWeight="Bold"
                        Text="- Multiple accounts (use the code below)"></TextBlock>
+                <CheckBox Name="chk_multi_acc"></CheckBox>
+            </StackPanel>
+            
             <StackPanel Orientation="Horizontal">
-                <CheckBox></CheckBox>
+                <CheckBox Name="chk_code_multiacc"></CheckBox>
                 <TextBlock Margin="10, 0, 0, 0">
                             Use file txt instead. (FastPost_multi_multiacc.txt)
                 </TextBlock>
             </StackPanel>
-            <TextBlock Text="Syntax:"></TextBlock>
-            <TextBlock FontSize="11" FontStyle="Italic">
-                        (index_account) (file1@file2@file10) [caption] [hidelike] [turnoffcmt] [rnd_cap]
-            </TextBlock>
-            <TextBlock Text="Example code: (read more in FastPost_README.txt)">
-            </TextBlock>
-            <TextBlock FontSize="11" FontStyle="Italic">
-                        1 image1.png@image2.png HelloWorld
-            </TextBlock>
-            <TextBlock FontSize="11" FontStyle="Italic">
-                        2 image1.png Nice true true false
-            </TextBlock>
-            <TextBlock FontSize="11" FontStyle="Italic">
-                        3 image1.png false false true
-            </TextBlock>
 
-            <TextBox Height="100"></TextBox>
+            <TextBox Name="tbx_code_multiacc" Height="100"></TextBox>
         </StackPanel>
-        <Button Grid.Row="2" Grid.ColumnSpan="2">Post</Button>
+        <Button Name="btn_Post"
+                Grid.Row="2" Grid.ColumnSpan="2" Click="btn_Post_Click">Post</Button>
     </Grid>
 </Page>
