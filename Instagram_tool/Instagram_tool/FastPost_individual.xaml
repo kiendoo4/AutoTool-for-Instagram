@@ -83,11 +83,14 @@
                     <TextBlock Text="(Tự động ignore nếu phần caption đã nhập)"></TextBlock>
                     
                     <!--Multiple accounts-->
-                    <TextBlock FontSize="14"
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="14"
                                FontWeight="Bold"
                                Text="- Multiple accounts (use the code below)"></TextBlock>
+                        <CheckBox Name="chk_multi_acc"></CheckBox>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <CheckBox></CheckBox>
+                        <CheckBox Name="chk_filetxt"></CheckBox>
                         <TextBlock Margin="10, 0, 0, 0">
                             Use file txt instead. (FastPost_indv_multiacc.txt)
                         </TextBlock>
@@ -99,16 +102,9 @@
                     <TextBlock Text="Example code: (read more in FastPost_README.txt)">
                     </TextBlock>
                     <TextBlock FontSize="11" FontStyle="Italic">
-                        1 image1.png@image2.png HelloWorld                        
+                        1 image1.png@image2.png HelloWorld true true false
                     </TextBlock>
-                    <TextBlock FontSize="11" FontStyle="Italic">
-                        2 image1.png Nice true true false
-                    </TextBlock>
-                    <TextBlock FontSize="11" FontStyle="Italic">
-                        3 image1.png false false true
-                    </TextBlock>
-                    
-                    <TextBox Height="100"></TextBox>
+                    <TextBox Name="tbx_multi_acc" Height="100"></TextBox>
                 </StackPanel>
             </Grid>
 

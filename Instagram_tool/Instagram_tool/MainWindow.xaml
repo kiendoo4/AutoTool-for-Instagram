@@ -32,5 +32,10 @@
                 Grid.Column="1">
             Fast post
         </Button>
+
+        <Button Grid.Row="0"
+                Grid.Column="2"
+                Name="btn_test"
+                Click="btn_test_Click">Test</Button>
     </Grid>
 </Window>
