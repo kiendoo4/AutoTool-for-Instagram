@@ -43,7 +43,7 @@
                                         <ColumnDefinition Width="0.2*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Content="Tự động cào ảnh / comment" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,18,10,10"/>
-                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Margin="330,15,0,0" Grid.ColumnSpan="2">
+                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Margin="330,15,0,0" Grid.ColumnSpan="2" Click="AutoCraftImage_Click">
 
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">

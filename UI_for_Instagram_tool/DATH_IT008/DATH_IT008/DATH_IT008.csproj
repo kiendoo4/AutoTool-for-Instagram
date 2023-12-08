@@ -103,6 +103,9 @@
     <Compile Include="UserControl\AutoComment.xaml.cs">
       <DependentUpon>AutoComment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\AutoCraft.xaml.cs">
+      <DependentUpon>AutoCraft.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl\AutoComment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\AutoCraft.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

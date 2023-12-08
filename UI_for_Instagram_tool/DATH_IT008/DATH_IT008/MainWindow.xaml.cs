@@ -57,5 +57,13 @@ namespace DATH_IT008
             ContentForUC.Visibility = Visibility.Hidden;
             CurrentUC.Children.Add(autoComment);
         }
+
+        private void AutoCraftImage_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentUC.Children.Clear();
+            AutoCraft autoCraft = new AutoCraft(this);
+            ContentForUC.Visibility = Visibility.Hidden;
+            CurrentUC.Children.Add(autoCraft);
+        }
     }
 }
