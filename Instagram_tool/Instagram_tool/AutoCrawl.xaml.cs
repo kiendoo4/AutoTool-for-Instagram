@@ -125,8 +125,32 @@ namespace InstaCrawl
             }
         }
 
-        private void crawl(ref ChromeDriver driver, string target, int quantity)
+        private void gotoTarget(ref ChromeDriver driver, string targetUrl)
         {
+            //Chờ page load data
+            while (true)
+            {
+                IWebElement check = driver.FindElement(By.TagName("html"));
+                if (check.GetAttribute("class").Contains("_aa4c")) Thread.Sleep(500);
+                else break;
+            }
+            Thread.Sleep(500);
+            driver.Navigate().GoToUrl(targetUrl);
+        }
+
+        private void crawl(ref ChromeDriver driver, int quantity)
+        {
+            //wait for user info loading
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            IWebElement check = wait.Until(ExpectedConditions.ElementIsVisible(By.TagName("article")));
+            Thread.Sleep(100);
+            //Lấy tên target
+            IWebElement post = driver.FindElement(By.TagName("main"));
+            IWebElement targetName = post.FindElement(By.XPath(".//div/header/section/div[1]/a/h2"));
+            string target = targetName.GetAttribute("innerText");
+            //Lấy số lượng bài tối đa
+            post = post.FindElement(By.XPath(".//div/header/section/ul/li[1]/span/span"));
+            int maxQuantity = Convert.ToInt32(post.GetAttribute("innerText"));
             //Kiểm tra đối tượng đã được crawl chưa
             string path = $".\\downloaded\\{target}";
             if (Directory.Exists(path))
@@ -138,14 +162,6 @@ namespace InstaCrawl
             {
                 Directory.CreateDirectory(path);
             }
-            //wait for user info loading
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            IWebElement check = wait.Until(ExpectedConditions.ElementIsVisible(By.TagName("article")));
-            Thread.Sleep(100);
-            //Lấy số lượng bài tối đa
-            IWebElement post = driver.FindElement(By.TagName("main"));
-            post = post.FindElement(By.XPath(".//div/header/section/ul/li[1]/span/span"));
-            int maxQuantity = Convert.ToInt32(post.GetAttribute("innerText"));
             //Lấy url của bài viết
             HashSet<string> urlBag = new HashSet<string>();
             try
@@ -259,8 +275,8 @@ namespace InstaCrawl
         {
             ChromeDriver driver = new ChromeDriver();
             login(ref driver, tbUsername.Text, pbPassword.Password);
-            search(ref driver, tbSearchTarget.Text);
-            crawl(ref driver, tbSearchTarget.Text, Convert.ToInt32(tbQuantity.Text));
+            gotoTarget(ref driver, tbSearchTarget.Text);
+            crawl(ref driver, Convert.ToInt32(tbQuantity.Text));
         }
     }
 }
