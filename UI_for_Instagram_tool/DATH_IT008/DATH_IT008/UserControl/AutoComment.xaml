@@ -15,13 +15,10 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Content="Tự động bình luận" FontFamily="Paytone One" FontSize="21" Margin="16,18,82,0"/>
-                <Label Content="Nhập số lượng bài viết để comment" FontFamily="Quicksand Semibold" FontSize="18
-                       " Margin="20,10,113,243" Grid.Row="1"/>
-                <TextBox Name="SL_cmt" FontFamily="Quicksand Semibold" FontSize="18" Margin="342,12,22,259" Grid.Row="1"/>
-                <Label Grid.Row="1" Content="Paste đường dẫn để tự động bình luận:" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,47,30,213"/>
-                <TextBox Name="Directory" FontFamily="Quicksand Semibold" FontSize="18" Margin="20,86,30,189" Grid.Row="1"/>
-                <Label Grid.Row="1" Content="hoặc" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,131,373,125"/>
-                <Button Click="ChooseDirectiryClick" Grid.Row="1" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="82,128,0,0">
+                <Label Grid.Row="1" Content="Paste đường dẫn để tự động bình luận:" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,14,30,210"/>
+                <TextBox Name="Directory" FontFamily="Quicksand Semibold" FontSize="18" Margin="20,58,30,207" Grid.Row="1"/>
+                <Label Grid.Row="1" Content="hoặc" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,121,373,135"/>
+                <Button Click="ChooseDirectiryClick" Grid.Row="1" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="82,120,0,0">
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
@@ -47,9 +44,9 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Label Grid.Row="1" Content="chứa đường dẫn và" FontSize="18" FontFamily="Quicksand Semibold" Margin="208,131,30,125"/>
-                <Label Grid.Row="1" Content="chứa danh sách các comment" FontSize="18" FontFamily="Quicksand Semibold" Margin="152,180,22,75"/>
-                <Button Click="ChooseCommentList" Grid.Row="1" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="24,179,0,0">
+                <Label Grid.Row="1" Content="chứa đường dẫn và" FontSize="18" FontFamily="Quicksand Semibold" Margin="208,124,30,132"/>
+                <Label Grid.Row="1" Content="chứa danh sách các comment" FontSize="18" FontFamily="Quicksand Semibold" Margin="152,174,22,81"/>
+                <Button Click="ChooseCommentList" Grid.Row="1" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="24,174,0,0">
 
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
@@ -74,7 +71,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Button Name="FinishButton" Click="FinishClick" Grid.Row="2" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="302,10,0,0">
+                <Button Name="FinishButton" Click="FinishClick" Grid.Row="3" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="302,10,0,0">
 
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
