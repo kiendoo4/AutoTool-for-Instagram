@@ -110,6 +110,9 @@
     <Compile Include="UserControl\AutoFollow.xaml.cs">
       <DependentUpon>AutoFollow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\AutoLike.xaml.cs">
+      <DependentUpon>AutoLike.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\AutoReport.xaml.cs">
       <DependentUpon>AutoReport.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl\AutoFollow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\AutoLike.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

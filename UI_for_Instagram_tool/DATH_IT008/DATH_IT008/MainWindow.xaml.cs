@@ -87,5 +87,13 @@ namespace DATH_IT008
             ContentForUC.Visibility = Visibility.Hidden;
             CurrentUC.Children.Add(autoReport);
         }
+
+        private void Auto_Like_Unlike_Button(object sender, RoutedEventArgs e)
+        {
+            CurrentUC.Children.Clear();
+            AutoLike autolike = new AutoLike(this);
+            ContentForUC.Visibility = Visibility.Hidden;
+            CurrentUC.Children.Add(autolike);
+        }
     }
 }

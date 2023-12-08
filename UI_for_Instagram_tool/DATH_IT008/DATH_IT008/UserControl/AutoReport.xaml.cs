@@ -32,6 +32,7 @@ namespace DATH_IT008.UserControl
         {
             InitializeComponent();
             LabelToShow.Content = "Report user";
+            Label2ToShow.Content = "chứa các username";
         }
         public AutoReport(MainWindow mainWindow)
         {
@@ -39,6 +40,7 @@ namespace DATH_IT008.UserControl
             chromedrivers = mainWindow.chromedrivers;
             Cb_choose.SelectedIndex = 0;
             LabelToShow.Content = "Report user";
+            Label2ToShow.Content = "chứa các username";
         }
         private void myComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -47,11 +49,15 @@ namespace DATH_IT008.UserControl
             {
                 LabelToShow.Content = "Report user trên Insta";
                 Label1op1.Content = "Nhập tên tài khoản user bạn muốn report";
+                Label2ToShow.Content = "chứa các username";
+
             }
             else
             {
                 LabelToShow.Content = "Report bài viết trên Insta";
                 Label1op1.Content = "Nhập đường dẫn user bạn muốn report";
+                Label2ToShow.Content = "chứa các bài viết";
+
             }
         }
         private void ChooseDirectoryUserClick(object sender, RoutedEventArgs e)
@@ -89,18 +95,59 @@ namespace DATH_IT008.UserControl
         {
             if (userChoice == null)
             {
-                MessageBox.Show("Vui lòng chọn report user hoặc report thông báo", "Thông báo");
+                MessageBox.Show("Vui lòng chọn report user hoặc report bài viết", "Thông báo");
             }
             else
             {
-                userChoice = ((ComboBoxItem)Cb_choose.SelectedItem).Content.ToString();
-                if (userChoice == "Tùy chọn 1")
+                if (!DirectoryUser.IsEnabled)
                 {
-                    for (int i = 0; i < chromedrivers.Count; i++)
+                    userChoice = ((ComboBoxItem)Cb_choose.SelectedItem).Content.ToString();
+                    if (userChoice == "Tùy chọn 1")
                     {
-                        for (int j = 0; j < directoryUserList.Count; j++)
+                        for (int i = 0; i < chromedrivers.Count; i++)
                         {
-                            chromedrivers[i].Navigate().GoToUrl($"https://www.instagram.com/{directoryUserList[j]}/");
+                            for (int j = 0; j < directoryUserList.Count; j++)
+                            {
+                                chromedrivers[i].Navigate().GoToUrl($"https://www.instagram.com/{directoryUserList[j]}/");
+
+                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                                var options = chromedrivers[i].FindElement(By.XPath("//div[@class='x1i10hfl x6umtig x1b1mbwd xaqea5y xav7gou x9f619 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 xjbqb8w x1ejq31n xd10rxx x1sy0etr x17r0tee x1ypdohk x78zum5 xl56j7k x1y1aw1k x1sxyh0 xwib8y2 xurb0ha xcdnw81']//div[@class='x6s0dn4 x78zum5 xdt5ytf xl56j7k']//*[@aria-label='Options']"));
+                                options.Click();
+
+                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                                var report = chromedrivers[i].FindElement(By.XPath("//button[normalize-space()='Report']"));
+                                report.Click();
+
+                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                                var reason = chromedrivers[i].FindElement(By.XPath("//div[normalize-space()='Report Account']"));
+                                reason.Click();
+
+                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                                var pretending = chromedrivers[i].FindElement(By.XPath("//body"));
+                                pretending.Click();
+
+                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                                var choose = chromedrivers[i].FindElement(By.XPath("//div[@class='_abn2'][normalize-space()='Me']"));
+                                choose.Click();
+
+                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                                var submit = chromedrivers[i].FindElement(By.XPath("//button[normalize-space()='Submit report']"));
+                                submit.Click();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        /**/
+                    }
+                }
+                else
+                {
+                    if (userChoice == "Tùy chọn 1")
+                    {
+                        for (int i = 0; i < chromedrivers.Count; i++)
+                        {
+                            chromedrivers[i].Navigate().GoToUrl($"https://www.instagram.com/{DirectoryUser.Text}/");
 
                             Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
                             var options = chromedrivers[i].FindElement(By.XPath("//div[@class='x1i10hfl x6umtig x1b1mbwd xaqea5y xav7gou x9f619 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 xjbqb8w x1ejq31n xd10rxx x1sy0etr x17r0tee x1ypdohk x78zum5 xl56j7k x1y1aw1k x1sxyh0 xwib8y2 xurb0ha xcdnw81']//div[@class='x6s0dn4 x78zum5 xdt5ytf xl56j7k']//*[@aria-label='Options']"));
@@ -125,13 +172,14 @@ namespace DATH_IT008.UserControl
                             Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
                             var submit = chromedrivers[i].FindElement(By.XPath("//button[normalize-space()='Submit report']"));
                             submit.Click();
+
                         }
                     }
-                }
-                else
-                {
-                    /**/
-                }
+                    else
+                    {
+                        /**/
+                    }
+                }    
             }
         }
     }
