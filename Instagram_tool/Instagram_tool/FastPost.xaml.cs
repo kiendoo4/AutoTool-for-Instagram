@@ -19,17 +19,6 @@ namespace Instagram_tool
     /// </summary>
     public partial class FastPost : Window
     {
-        /* TO DO LIST
-         * 
-         * - Big to do: Đăng bài + ảnh + caption + option (Ẩn like và views + tắt bình luận + Accessibility)
-         * 
-         * - Features:
-         * + Invidual post + invidual image (video): Đăng bài đơn + caption cụ thể (hoặc random)
-         * + Invidual post + multiple images (videos): Đăng bài đơn nhưng bài đó chứa nhiều ảnh hoặc video + caption cụ thể (hoặc random)
-         * + Multiple posts + invidual image (video): Đăng nhiều bài + caption cụ thể cho từng bài hoặc một caption cho all (hoặc random) 
-         * + Multiple posts + multiple images (videos): như feature 3 nhưng nhiều files
-         */
-
         public FastPost()
         {
             InitializeComponent();

@@ -1,1 +1,3 @@
-﻿
+﻿image1.png@image2.png\true\true\false
+image3.png\false\false\true
+image4.png\Hello World bro\false\false\false
