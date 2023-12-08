@@ -110,6 +110,9 @@
     <Compile Include="UserControl\AutoFollow.xaml.cs">
       <DependentUpon>AutoFollow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\AutoReport.xaml.cs">
+      <DependentUpon>AutoReport.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -135,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl\AutoFollow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\AutoReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

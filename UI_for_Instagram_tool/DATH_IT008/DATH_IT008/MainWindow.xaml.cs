@@ -82,7 +82,10 @@ namespace DATH_IT008
 
         private void ReportClick(object sender, RoutedEventArgs e)
         {
-
+            CurrentUC.Children.Clear();
+            AutoReport autoReport = new AutoReport(this);
+            ContentForUC.Visibility = Visibility.Hidden;
+            CurrentUC.Children.Add(autoReport);
         }
     }
 }

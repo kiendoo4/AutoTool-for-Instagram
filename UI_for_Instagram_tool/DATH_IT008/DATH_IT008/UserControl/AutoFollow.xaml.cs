@@ -110,6 +110,7 @@ namespace DATH_IT008.UserControl
                             }
                         }
                     }
+                    MessageBox.Show("Unfollow thành công", "Thông báo");
                 }
                 else
                 {
@@ -136,6 +137,7 @@ namespace DATH_IT008.UserControl
                             }
                         }
                     }
+                    MessageBox.Show("Unfollow thành công", "Thông báo");
                 }    
             }
         }

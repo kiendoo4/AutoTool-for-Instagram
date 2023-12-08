@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium.Chrome;
+﻿using Microsoft.Win32;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace DATH_IT008.UserControl
 {
@@ -43,13 +45,13 @@ namespace DATH_IT008.UserControl
             userChoice = ((ComboBoxItem)Cb_choose.SelectedItem).Content.ToString();
             if (userChoice == "Tùy chọn 1")
             {
-                LabelToShow.Content = "Follow user trên Insta";
-                Label1op1.Content = "Nhập tên tài khoản user bạn muốn follow";
+                LabelToShow.Content = "Report user trên Insta";
+                Label1op1.Content = "Nhập tên tài khoản user bạn muốn report";
             }
             else
             {
-                LabelToShow.Content = "Unfollow user trên Insta";
-                Label1op1.Content = "Nhập tên tài khoản user bạn muốn unfollow";
+                LabelToShow.Content = "Report bài viết trên Insta";
+                Label1op1.Content = "Nhập đường dẫn user bạn muốn report";
             }
         }
         private void ChooseDirectoryUserClick(object sender, RoutedEventArgs e)
@@ -70,7 +72,13 @@ namespace DATH_IT008.UserControl
                 {
                     directoryUserList.Add(fileContent[i]);
                 }
-                MessageBox.Show("Đã cập nhật danh sách các user", "Thông báo");
+                userChoice = ((ComboBoxItem)Cb_choose.SelectedItem).Content.ToString();
+                if (userChoice == "Tùy chọn 1")
+                    MessageBox.Show("Đã cập nhật danh sách các user", "Thông báo");
+                else
+                {
+                    MessageBox.Show("Đã cập nhật danh sách các link bài viết", "Thông báo");
+                }    
             }
             else
             {
@@ -81,7 +89,7 @@ namespace DATH_IT008.UserControl
         {
             if (userChoice == null)
             {
-                MessageBox.Show("Vui lòng chọn follow hoặc unfollow", "Thông báo");
+                MessageBox.Show("Vui lòng chọn report user hoặc report thông báo", "Thông báo");
             }
             else
             {
@@ -93,47 +101,36 @@ namespace DATH_IT008.UserControl
                         for (int j = 0; j < directoryUserList.Count; j++)
                         {
                             chromedrivers[i].Navigate().GoToUrl($"https://www.instagram.com/{directoryUserList[j]}/");
+
                             Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
-                            try
-                            {
-                                var button = chromedrivers[i].FindElement(By.CssSelector("button[class=' _acan _acap _acas _aj1- _ap30']"));
-                                if (button != null)
-                                {
-                                    button.Click();
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                continue;
-                            }
+                            var options = chromedrivers[i].FindElement(By.XPath("//div[@class='x1i10hfl x6umtig x1b1mbwd xaqea5y xav7gou x9f619 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 xjbqb8w x1ejq31n xd10rxx x1sy0etr x17r0tee x1ypdohk x78zum5 xl56j7k x1y1aw1k x1sxyh0 xwib8y2 xurb0ha xcdnw81']//div[@class='x6s0dn4 x78zum5 xdt5ytf xl56j7k']//*[@aria-label='Options']"));
+                            options.Click();
+
+                            Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                            var report = chromedrivers[i].FindElement(By.XPath("//button[normalize-space()='Report']"));
+                            report.Click();
+
+                            Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                            var reason = chromedrivers[i].FindElement(By.XPath("//div[normalize-space()='Report Account']"));
+                            reason.Click();
+
+                            Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                            var pretending = chromedrivers[i].FindElement(By.XPath("//body"));
+                            pretending.Click();
+
+                            Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                            var choose = chromedrivers[i].FindElement(By.XPath("//div[@class='_abn2'][normalize-space()='Me']"));
+                            choose.Click();
+
+                            Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                            var submit = chromedrivers[i].FindElement(By.XPath("//button[normalize-space()='Submit report']"));
+                            submit.Click();
                         }
                     }
                 }
                 else
                 {
-                    for (int i = 0; i < chromedrivers.Count; i++)
-                    {
-                        for (int j = 0; j < directoryUserList.Count; j++)
-                        {
-                            chromedrivers[i].Navigate().GoToUrl($"https://www.instagram.com/{directoryUserList[j]}/");
-                            Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
-                            var a = chromedrivers[i].FindElement(By.XPath("//button[contains(@class,'_acan _acap _acat _aj1- _ap30')]"));
-                            try
-                            {
-                                if (a != null)
-                                {
-                                    a.Click();
-                                    Thread.Sleep(3000);
-                                    a = chromedrivers[i].FindElement(By.XPath("//span[contains(text(),'Unfollow')]"));
-                                    a.Click();
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                continue;
-                            }
-                        }
-                    }
+                    /**/
                 }
             }
         }
