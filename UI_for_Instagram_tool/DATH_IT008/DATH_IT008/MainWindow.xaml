@@ -43,12 +43,12 @@
                                         <ColumnDefinition Width="0.8*"></ColumnDefinition>
                                         <ColumnDefinition Width="0.2*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Tự động cào ảnh / comment" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,14,10,2"/>
-                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Margin="330,13,0,0" Grid.ColumnSpan="2" Click="AutoCraftImage_Click">
+                                    <Label Grid.Column="0" Content="Tự động cào ảnh / comment" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,10,10,6"/>
+                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Center" Cursor="Hand" Margin="330,0,0,0" Grid.ColumnSpan="2" Click="AutoCraftImage_Click">
 
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
-                                                <Border CornerRadius="20" BorderThickness="0">
+                                                <Border CornerRadius="10" BorderThickness="0">
                                                     <Border.Style>
                                                         <Style TargetType="Border">
                                                             <Setter Property="Background" Value="Transparent"/>
@@ -76,12 +76,12 @@
                                         <ColumnDefinition Width="0.8*"></ColumnDefinition>
                                         <ColumnDefinition Width="0.2*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Tự động thả tim" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,12,126,8"/>
-                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Margin="330,11,0,0" Grid.ColumnSpan="2">
+                                    <Label Grid.Column="0" Content="Tự động thả tim" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,6,126,14"/>
+                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Margin="330,5,0,0" Grid.ColumnSpan="2">
 
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
-                                                <Border CornerRadius="20" BorderThickness="0">
+                                                <Border CornerRadius="10" BorderThickness="0">
                                                     <Border.Style>
                                                         <Style TargetType="Border">
                                                             <Setter Property="Background" Value="Transparent"/>
@@ -109,12 +109,12 @@
                                         <ColumnDefinition Width="0.8*"></ColumnDefinition>
                                         <ColumnDefinition Width="0.2*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Tự động bình luận" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,14,126,8"/>
-                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Grid.ColumnSpan="2" Margin="329,11,0,0" Click="AutoCommentClick">
+                                    <Label Grid.Column="0" Content="Tự động bình luận" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,4,126,18"/>
+                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Grid.ColumnSpan="2" Margin="329,3,0,0" Click="AutoCommentClick">
 
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
-                                                <Border CornerRadius="20" BorderThickness="0">
+                                                <Border CornerRadius="10" BorderThickness="0">
                                                     <Border.Style>
                                                         <Style TargetType="Border">
                                                             <Setter Property="Background" Value="Transparent"/>
@@ -142,12 +142,12 @@
                                         <ColumnDefinition Width="0.8*"></ColumnDefinition>
                                         <ColumnDefinition Width="0.2*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Tự động follow" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,14,126,8"/>
-                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Center" Cursor="Hand" Grid.ColumnSpan="2" Margin="329,0,0,0">
+                                    <Label Grid.Column="0" Content="Tự động follow/unfollow" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,4,70,18"/>
+                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Grid.ColumnSpan="2" Margin="329,3,0,0" Click="Follow_Unfollow_Click">
 
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
-                                                <Border CornerRadius="20" BorderThickness="0">
+                                                <Border CornerRadius="10" BorderThickness="0">
                                                     <Border.Style>
                                                         <Style TargetType="Border">
                                                             <Setter Property="Background" Value="Transparent"/>
@@ -176,12 +176,46 @@
                                         <ColumnDefinition Width="0.8*"></ColumnDefinition>
                                         <ColumnDefinition Width="0.2*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Tự động unfollow" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,14,126,8"/>
-                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Center" Cursor="Hand" Grid.ColumnSpan="2" Margin="329,0,0,0">
+                                    <Label Grid.Column="0" Content="Tự động report" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,6,126,16"/>
+                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Grid.ColumnSpan="2" Margin="329,5,0,0" Click="ReportClick">
 
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
-                                                <Border CornerRadius="20" BorderThickness="0">
+                                                <Border CornerRadius="10" BorderThickness="0">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Background" Value="Transparent"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Background" Value="#522c53"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsMouseOver" Value="False">
+                                                                    <Setter Property="Background" Value="Purple"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <Grid>
+                                                        <TextBlock Grid.Column="1" Text="Click"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+
+                                </Grid>
+                                <Grid Grid.Row="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Content="Tự động đăng bài mới" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,6,96,16"/>
+                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Grid.ColumnSpan="2" Margin="329,3,0,0" Click ="PostClick">
+
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border CornerRadius="10" BorderThickness="0">
                                                     <Border.Style>
                                                         <Style TargetType="Border">
                                                             <Setter Property="Background" Value="Transparent"/>

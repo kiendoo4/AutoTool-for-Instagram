@@ -107,6 +107,9 @@
     <Compile Include="UserControl\AutoCraft.xaml.cs">
       <DependentUpon>AutoCraft.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\AutoFollow.xaml.cs">
+      <DependentUpon>AutoFollow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -128,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl\AutoCraft.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\AutoFollow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

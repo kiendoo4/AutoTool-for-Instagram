@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="DATH_IT008.UserControl.AutoFollow"
+﻿<UserControl x:Class="DATH_IT008.UserControl.AutoReport"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -15,7 +15,7 @@
                     <RowDefinition Height="5*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Content="Tự động follow / unfollow" FontFamily="Paytone One" FontSize="21" Margin="16,10,82,36" Grid.RowSpan="2"/>
+                <Label Grid.Row="0" Content="Tự động report user/bài viết" FontFamily="Paytone One" FontSize="21" Margin="16,10,82,36" Grid.RowSpan="2"/>
                 <ComboBox Name="Cb_choose" FontSize="18" FontFamily="Quicksand Semibold" Grid.Row="1" SelectionChanged="myComboBox_SelectionChanged" Margin="24,9,272,10">
                     <ComboBoxItem Content="Tùy chọn 1">
                         <ComboBoxItem.Style>

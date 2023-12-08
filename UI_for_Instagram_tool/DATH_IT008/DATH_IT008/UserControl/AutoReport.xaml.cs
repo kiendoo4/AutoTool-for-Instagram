@@ -1,6 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,29 +15,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace DATH_IT008.UserControl
 {
     /// <summary>
-    /// Interaction logic for AutoFollow.xaml
+    /// Interaction logic for AutoReport.xaml
     /// </summary>
-    public partial class AutoFollow
+    public partial class AutoReport
     {
         string userChoice = null;
         List<ChromeDriver> chromedrivers = new List<ChromeDriver>();
         List<string> directoryUserList = new List<string>();
-        public AutoFollow()
+        public AutoReport()
         {
             InitializeComponent();
-            LabelToShow.Content = "Follow user trên Insta";
+            LabelToShow.Content = "Report user";
         }
-        public AutoFollow(MainWindow mainWindow)
+        public AutoReport(MainWindow mainWindow)
         {
             InitializeComponent();
             chromedrivers = mainWindow.chromedrivers;
             Cb_choose.SelectedIndex = 0;
-            LabelToShow.Content = "Follow user trên Insta";
+            LabelToShow.Content = "Report user";
         }
         private void myComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -47,12 +45,12 @@ namespace DATH_IT008.UserControl
             {
                 LabelToShow.Content = "Follow user trên Insta";
                 Label1op1.Content = "Nhập tên tài khoản user bạn muốn follow";
-            }    
+            }
             else
             {
                 LabelToShow.Content = "Unfollow user trên Insta";
                 Label1op1.Content = "Nhập tên tài khoản user bạn muốn unfollow";
-            }    
+            }
         }
         private void ChooseDirectoryUserClick(object sender, RoutedEventArgs e)
         {
@@ -130,16 +128,14 @@ namespace DATH_IT008.UserControl
                                     a.Click();
                                 }
                             }
-                            catch (Exception ex) 
+                            catch (Exception ex)
                             {
                                 continue;
                             }
                         }
                     }
-                }    
+                }
             }
         }
-
-        
     }
 }

@@ -31,7 +31,7 @@ namespace DATH_IT008.UserControl
     {
         List<ChromeDriver> chromedrivers = new List<ChromeDriver>();
         List<string> directoryList = new List<string>();
-        bool check1 = false, check2 = false;
+        bool check2 = false;
         string saveDir = null;
         public AutoCraft()
         {
@@ -86,6 +86,10 @@ namespace DATH_IT008.UserControl
             string rawNum = post.GetAttribute("innerText");
             rawNum = new string(rawNum.Where(char.IsDigit).ToArray());
             int maxQuantity = Convert.ToInt32(rawNum);
+            if(quantity == 0)
+            {
+                quantity = maxQuantity;
+            }    
             //Kiểm tra đối tượng đã được crawl chưa
             string path = $"{saveDirr}\\{target}";
             MessageBox.Show(path);
@@ -217,7 +221,14 @@ namespace DATH_IT008.UserControl
             for(int i = 0; i < directoryList.Count; i++)
             {
                 chromeDriver.Navigate().GoToUrl(directoryList[i]);
-                crawl(ref chromeDriver, Convert.ToInt32(SL_Craft.Text), saveDir);
+                if (SL_Craft.Text != "")
+                {
+                    crawl(ref chromeDriver, Convert.ToInt32(SL_Craft.Text), saveDir);
+                }
+                else
+                {
+                    crawl(ref chromeDriver, 0, saveDir);
+                }    
             }
         }
     }

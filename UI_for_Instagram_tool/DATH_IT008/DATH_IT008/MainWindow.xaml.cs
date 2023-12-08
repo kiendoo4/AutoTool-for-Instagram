@@ -66,10 +66,23 @@ namespace DATH_IT008
             CurrentUC.Children.Add(autoCraft);
         }
 
-        private void FollowClick(object sender, RoutedEventArgs e)
+
+        private void PostClick(object sender, RoutedEventArgs e)
         {
 
         }
 
+        private void Follow_Unfollow_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentUC.Children.Clear();
+            AutoFollow autoFollow = new AutoFollow(this);
+            ContentForUC.Visibility = Visibility.Hidden;
+            CurrentUC.Children.Add(autoFollow);
+        }
+
+        private void ReportClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
