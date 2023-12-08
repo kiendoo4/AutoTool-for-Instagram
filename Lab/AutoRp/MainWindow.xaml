@@ -1,0 +1,26 @@
+﻿<Window x:Class="AutoRp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoRp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock Text="Nhập user cần report:" FontSize="21" FontFamily="PayTone One"></TextBlock>
+            <TextBox x:Name="tb_value" Height="50" FontSize="21" FontFamily="QuickSand" Text="luongdaiphat"></TextBox>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Button 
+                    Content="Report" 
+                    Width="100" 
+                    Height="50" 
+                    Click="btn_rp"></Button>
+        </Grid>
+    </Grid>
+</Window>
