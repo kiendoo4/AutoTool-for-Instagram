@@ -42,7 +42,6 @@ namespace DATH_IT008.UserControl
             InitializeComponent();
             chromedrivers = mainWindow.chromedrivers;
         }
-
         private void ChooseDirectoryList(object sender, RoutedEventArgs e)
         {
             directoryList = new List<string>();
@@ -72,18 +71,33 @@ namespace DATH_IT008.UserControl
             }
         }
 
-        private void crawl(ref ChromeDriver driver, string target, int quantity, string saveDir)
+        private void crawl(ref ChromeDriver driver, int quantity, string saveDirr)
         {
-            //Kiểm tra đối tượng đã được crawl chưa
-            string path = saveDir;
             //wait for user info loading
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             IWebElement check = wait.Until(ExpectedConditions.ElementIsVisible(By.TagName("article")));
             Thread.Sleep(100);
-            //Lấy số lượng bài tối đa
+            //Lấy tên target
             IWebElement post = driver.FindElement(By.TagName("main"));
+            IWebElement targetName = post.FindElement(By.XPath(".//div/header/section/div[1]/a/h2"));
+            string target = targetName.GetAttribute("innerText");
+            //Lấy số lượng bài tối đa
             post = post.FindElement(By.XPath(".//div/header/section/ul/li[1]/span/span"));
-            int maxQuantity = Convert.ToInt32(post.GetAttribute("innerText"));
+            string rawNum = post.GetAttribute("innerText");
+            rawNum = new string(rawNum.Where(char.IsDigit).ToArray());
+            int maxQuantity = Convert.ToInt32(rawNum);
+            //Kiểm tra đối tượng đã được crawl chưa
+            string path = $"{saveDirr}\\{target}";
+            MessageBox.Show(path);
+            if (Directory.Exists(path))
+            {
+                MessageBox.Show("Đối tượng đã tồn tại.");
+                return;
+            }
+            else
+            {
+                Directory.CreateDirectory(path);
+            }
             //Lấy url của bài viết
             HashSet<string> urlBag = new HashSet<string>();
             try
@@ -136,7 +150,7 @@ namespace DATH_IT008.UserControl
                     if (imgBag.Count > 0)
                     {
                         string imageUrl = imgBag[0].GetAttribute("src");
-                        string localPath = $".\\downloaded\\{target}\\image{(count).ToString()}.png";
+                        string localPath = $"{saveDir}\\{target}\\image{(count).ToString()}.png";
                         using (WebClient webClient = new WebClient())
                         {
                             webClient.DownloadFile(imageUrl, localPath);
@@ -147,19 +161,6 @@ namespace DATH_IT008.UserControl
                     IWebElement frame = main.FindElement(By.XPath(".//div[2]/div/div[2]/div"));
                     List<IWebElement> cmtList = main.FindElements(By.XPath(".//div[2]/div/div[2]/div/div[@class='x78zum5 xdt5ytf x1iyjqo2']/div[@class='x9f619 xjbqb8w x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1']")).ToList();
                     int cmtCount = cmtList.Count;
-                    //int flag = 0;
-                    //while (true)
-                    //{
-                    //    Actions actions = new Actions(driver);
-                    //    actions.ScrollToElement(frame).MoveToElement(frame, frame.Size.Width - 5, frame.Size.Height - 5).Click().SendKeys(Keys.ArrowDown).Perform();
-                    //    Thread.Sleep(100);
-                    //    cmtList = main.FindElements(By.XPath(".//div[2]/div/div[2]/div/div[@class='x78zum5 xdt5ytf x1iyjqo2']/div[@class='x9f619 xjbqb8w x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh x1uhb9sk x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x1qjc9v5 x1oa3qoh x1nhvcw1']")).ToList();
-                    //    cmtCount = cmtList.Count;
-                    //    if (cmtCount == cmtList.Count) flag++;
-                    //    else flag = 0;
-                    //    if (flag == 50) break;
-                    //    if (cmtCount > 20) break;
-                    //}
                     for (int i = 0; i < Math.Min(20, cmtCount); i++)
                     {
                         try
@@ -171,7 +172,7 @@ namespace DATH_IT008.UserControl
                             Thread.Sleep(50);
                             continue;
                         }
-                        string filePath = $".\\downloaded\\{target}\\post{(count).ToString()}.txt";
+                        string filePath = $"{saveDirr}\\{target}\\post{(count).ToString()}.txt";
                         File.AppendAllText(filePath, (cmtList[i].GetAttribute("innerText") + "\n"));
                         Thread.Sleep(50);
                     }
@@ -190,28 +191,23 @@ namespace DATH_IT008.UserControl
             {
                 MessageBox.Show(ex.Message);
             }
-            MessageBox.Show("Done crawling", "Thông báo");
+            MessageBox.Show("Đã crawl xong", "Thông báo");
         }
 
         private void ChooseSaveFile(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-            // Set the properties of the SaveFileDialog
-            saveFileDialog.Title = "Select a directory to save the file";
-            saveFileDialog.Filter = "All Files|*.*"; // You can set specific filters if needed
-            saveFileDialog.FileName = "NewFile.txt"; // Default file name
-            if (saveFileDialog.ShowDialog() == true)
+            using (var folderDialog = new System.Windows.Forms.FolderBrowserDialog())
             {
-                // Get the selected directory
-                string saveDir = System.IO.Path.GetDirectoryName(saveFileDialog.FileName);
-
-                // Now you can use the selectedDirectory for saving your file or perform other actions
-                MessageBox.Show("Thư mục đã chọn: " + saveDir, "Thông báo");
-            }
-            else
-            {
-                
+                System.Windows.Forms.DialogResult result = folderDialog.ShowDialog();
+                if (result == System.Windows.Forms.DialogResult.OK && !string.IsNullOrWhiteSpace(folderDialog.SelectedPath))
+                {
+                    saveDir = folderDialog.SelectedPath;
+                    System.Windows.MessageBox.Show("Thư mục đã chọn: " + saveDir, "Thông báo");
+                }
+                else
+                {
+                    MessageBox.Show("Hủy thực thi", "Thông báo");
+                }    
             }
         }
 
@@ -221,8 +217,7 @@ namespace DATH_IT008.UserControl
             for(int i = 0; i < directoryList.Count; i++)
             {
                 chromeDriver.Navigate().GoToUrl(directoryList[i]);
-                //search(ref chromeDriver, directoryList[i]);
-                crawl(ref chromeDriver, directoryList[i], Convert.ToInt32(SL_Craft.Text), saveDir);
+                crawl(ref chromeDriver, Convert.ToInt32(SL_Craft.Text), saveDir);
             }
         }
     }

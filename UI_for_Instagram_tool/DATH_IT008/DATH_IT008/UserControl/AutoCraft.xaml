@@ -39,7 +39,7 @@
                                     </Style>
                                 </Border.Style>
                                 <Grid>
-                                    <TextBlock Grid.Column="1" Text="chọn file"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0"/>
+                                    <TextBlock Grid.Column="1" Text="Chọn file"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0"/>
                                 </Grid>
                             </Border>
                         </ControlTemplate>
@@ -89,13 +89,13 @@
                                     </Style>
                                 </Border.Style>
                                 <Grid>
-                                    <TextBlock Grid.Column="1" Text="chọn file txt"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0"/>
+                                    <TextBlock Grid.Column="1" Text="Chọn file txt"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0"/>
                                 </Grid>
                             </Border>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Label Grid.Row="1" Content="là file lưu ảnh" FontSize="18" FontFamily="Quicksand Semibold" Margin="152,148,10,107"/>
+                <Label Grid.Row="1" Content="là file lưu ảnh và comment." FontSize="18" FontFamily="Quicksand Semibold" Margin="152,148,10,107"/>
 
             </Grid>
         </Border>

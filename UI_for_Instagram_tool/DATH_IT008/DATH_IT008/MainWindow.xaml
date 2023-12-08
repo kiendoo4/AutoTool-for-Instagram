@@ -21,17 +21,18 @@
                     <Border Background="#FFFFFF" CornerRadius="30" BorderThickness="1" BorderBrush="Gray" Margin="40,52,10,28">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="0.5*"></RowDefinition>
+                                <RowDefinition Height="0.3*"></RowDefinition>
                                 <RowDefinition Height="2*"></RowDefinition>
-                                <RowDefinition Height="0.5*"></RowDefinition>
                                 <!--<RowDefinition Height="4*"></RowDefinition>
                                 <RowDefinition Height="4*"></RowDefinition>
                                 <RowDefinition Height="4*"></RowDefinition>
                                 <RowDefinition Height="4*"></RowDefinition>-->
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0" Content="Auto-tool tương tác trên Insta" FontSize="25" FontFamily="Paytone One" Margin="24,24,37,4"/>
+                            <Label Grid.Row="0" Content="Auto-tool tương tác trên Insta" FontSize="25" FontFamily="Paytone One" Margin="24,10,37,0"/>
                             <Grid Grid.Row="1">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
@@ -42,8 +43,8 @@
                                         <ColumnDefinition Width="0.8*"></ColumnDefinition>
                                         <ColumnDefinition Width="0.2*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Tự động cào ảnh / comment" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,18,10,10"/>
-                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Margin="330,15,0,0" Grid.ColumnSpan="2" Click="AutoCraftImage_Click">
+                                    <Label Grid.Column="0" Content="Tự động cào ảnh / comment" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,14,10,2"/>
+                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Margin="330,13,0,0" Grid.ColumnSpan="2" Click="AutoCraftImage_Click">
 
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
@@ -75,8 +76,8 @@
                                         <ColumnDefinition Width="0.8*"></ColumnDefinition>
                                         <ColumnDefinition Width="0.2*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Tự động thả tim" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,18,126,10"/>
-                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Margin="330,15,0,0" Grid.ColumnSpan="2">
+                                    <Label Grid.Column="0" Content="Tự động thả tim" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,12,126,8"/>
+                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Margin="330,11,0,0" Grid.ColumnSpan="2">
 
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
@@ -108,8 +109,8 @@
                                         <ColumnDefinition Width="0.8*"></ColumnDefinition>
                                         <ColumnDefinition Width="0.2*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Tự động bình luận" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,18,126,10"/>
-                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Grid.ColumnSpan="2" Margin="329,16,0,0" Click="AutoCommentClick">
+                                    <Label Grid.Column="0" Content="Tự động bình luận" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,14,126,8"/>
+                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Top" Cursor="Hand" Grid.ColumnSpan="2" Margin="329,11,0,0" Click="AutoCommentClick">
 
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
@@ -141,7 +142,7 @@
                                         <ColumnDefinition Width="0.8*"></ColumnDefinition>
                                         <ColumnDefinition Width="0.2*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Content="Tự động follow" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,18,126,10"/>
+                                    <Label Grid.Column="0" Content="Tự động follow" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,14,126,8"/>
                                     <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Center" Cursor="Hand" Grid.ColumnSpan="2" Margin="329,0,0,0">
 
                                         <Button.Template>
@@ -168,8 +169,42 @@
                                             </ControlTemplate>
                                         </Button.Template>
                                     </Button>
-                                </Grid>
 
+                                </Grid>
+                                <Grid Grid.Row="4">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Content="Tự động unfollow" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,14,126,8"/>
+                                    <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Center" Cursor="Hand" Grid.ColumnSpan="2" Margin="329,0,0,0">
+
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border CornerRadius="20" BorderThickness="0">
+                                                    <Border.Style>
+                                                        <Style TargetType="Border">
+                                                            <Setter Property="Background" Value="Transparent"/>
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsMouseOver" Value="True">
+                                                                    <Setter Property="Background" Value="#522c53"/>
+                                                                </Trigger>
+                                                                <Trigger Property="IsMouseOver" Value="False">
+                                                                    <Setter Property="Background" Value="Purple"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Border.Style>
+                                                    <Grid>
+                                                        <TextBlock Grid.Column="1" Text="Click"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+
+                                </Grid>
                             </Grid>
 
                         </Grid>
@@ -201,7 +236,7 @@
                     </StackPanel>
                     <Border Grid.Row="1" Margin="10,0,25,25" CornerRadius="29" Background="#FFFFFF" BorderBrush="Gray" BorderThickness="1">
                         <TextBlock Name="ContentForUC" Foreground="Gray" Text="Click để hiển thị nội dung" FontFamily="Paytone One" FontSize="21" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-                        
+
                     </Border>
                     <Grid Margin="10,0,25,25" Name = "CurrentUC"  Grid.Row="1">
 

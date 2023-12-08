@@ -65,5 +65,11 @@ namespace DATH_IT008
             ContentForUC.Visibility = Visibility.Hidden;
             CurrentUC.Children.Add(autoCraft);
         }
+
+        private void FollowClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
