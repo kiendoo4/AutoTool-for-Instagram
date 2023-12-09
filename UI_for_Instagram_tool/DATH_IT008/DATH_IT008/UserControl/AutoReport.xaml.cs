@@ -55,7 +55,7 @@ namespace DATH_IT008.UserControl
             else
             {
                 LabelToShow.Content = "Report bài viết trên Insta";
-                Label1op1.Content = "Nhập đường dẫn user bạn muốn report";
+                Label1op1.Content = "Nhập đường dẫn bài viết bạn muốn report";
                 Label2ToShow.Content = "chứa các bài viết";
 
             }
@@ -76,7 +76,10 @@ namespace DATH_IT008.UserControl
                 string[] fileContent = System.IO.File.ReadAllLines(textFilePath);
                 for (int i = 0; i < fileContent.Length; i++)
                 {
-                    directoryUserList.Add(fileContent[i]);
+                    if(DirectoryUser.Text == "")
+                        DirectoryUser.Text = fileContent[i];
+                    else
+                        DirectoryUser.Text += '\n' + fileContent[i];
                 }
                 userChoice = ((ComboBoxItem)Cb_choose.SelectedItem).Content.ToString();
                 if (userChoice == "Tùy chọn 1")
@@ -93,61 +96,24 @@ namespace DATH_IT008.UserControl
         }
         private void FinishClick(object sender, RoutedEventArgs e)
         {
-            if (userChoice == null)
+            if (DirectoryUser.Text == "")
             {
-                MessageBox.Show("Vui lòng chọn report user hoặc report bài viết", "Thông báo");
+                MessageBox.Show("Vui lòng nhập username!", "Thông báo");
             }
             else
             {
-                if (!DirectoryUser.IsEnabled)
+                foreach (var item in DirectoryUser.Text.Split('\n'))
                 {
-                    userChoice = ((ComboBoxItem)Cb_choose.SelectedItem).Content.ToString();
-                    if (userChoice == "Tùy chọn 1")
-                    {
-                        for (int i = 0; i < chromedrivers.Count; i++)
-                        {
-                            for (int j = 0; j < directoryUserList.Count; j++)
-                            {
-                                chromedrivers[i].Navigate().GoToUrl($"https://www.instagram.com/{directoryUserList[j]}/");
-
-                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
-                                var options = chromedrivers[i].FindElement(By.XPath("//div[@class='x1i10hfl x6umtig x1b1mbwd xaqea5y xav7gou x9f619 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 xjbqb8w x1ejq31n xd10rxx x1sy0etr x17r0tee x1ypdohk x78zum5 xl56j7k x1y1aw1k x1sxyh0 xwib8y2 xurb0ha xcdnw81']//div[@class='x6s0dn4 x78zum5 xdt5ytf xl56j7k']//*[@aria-label='Options']"));
-                                options.Click();
-
-                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
-                                var report = chromedrivers[i].FindElement(By.XPath("//button[normalize-space()='Report']"));
-                                report.Click();
-
-                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
-                                var reason = chromedrivers[i].FindElement(By.XPath("//div[normalize-space()='Report Account']"));
-                                reason.Click();
-
-                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
-                                var pretending = chromedrivers[i].FindElement(By.XPath("//body"));
-                                pretending.Click();
-
-                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
-                                var choose = chromedrivers[i].FindElement(By.XPath("//div[@class='_abn2'][normalize-space()='Me']"));
-                                choose.Click();
-
-                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
-                                var submit = chromedrivers[i].FindElement(By.XPath("//button[normalize-space()='Submit report']"));
-                                submit.Click();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        /**/
-                    }
-                }
-                else
+                    directoryUserList.Add(item);
+                }    
+                userChoice = ((ComboBoxItem)Cb_choose.SelectedItem).Content.ToString();
+                if (userChoice == "Tùy chọn 1")
                 {
-                    if (userChoice == "Tùy chọn 1")
+                    for (int i = 0; i < chromedrivers.Count; i++)
                     {
-                        for (int i = 0; i < chromedrivers.Count; i++)
+                        for (int j = 0; j < directoryUserList.Count; j++)
                         {
-                            chromedrivers[i].Navigate().GoToUrl($"https://www.instagram.com/{DirectoryUser.Text}/");
+                            chromedrivers[i].Navigate().GoToUrl($"https://www.instagram.com/{directoryUserList[j]}/");
 
                             Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
                             var options = chromedrivers[i].FindElement(By.XPath("//div[@class='x1i10hfl x6umtig x1b1mbwd xaqea5y xav7gou x9f619 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz x6s0dn4 xjbqb8w x1ejq31n xd10rxx x1sy0etr x17r0tee x1ypdohk x78zum5 xl56j7k x1y1aw1k x1sxyh0 xwib8y2 xurb0ha xcdnw81']//div[@class='x6s0dn4 x78zum5 xdt5ytf xl56j7k']//*[@aria-label='Options']"));
@@ -172,15 +138,14 @@ namespace DATH_IT008.UserControl
                             Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
                             var submit = chromedrivers[i].FindElement(By.XPath("//button[normalize-space()='Submit report']"));
                             submit.Click();
-
                         }
                     }
-                    else
-                    {
-                        /**/
-                    }
-                }    
-            }
+                }
+                else
+                {
+                    /**/
+                }
+            } 
         }
     }
 }

@@ -54,7 +54,6 @@ namespace DATH_IT008.UserControl
         }
         private void ChooseDirectoryClick(object sender, RoutedEventArgs e)
         {
-            Directory.IsEnabled = false;
             directoryList = new List<string>();
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -69,7 +68,12 @@ namespace DATH_IT008.UserControl
                 string[] fileContent = System.IO.File.ReadAllLines(textFilePath);
                 for (int i = 0; i < fileContent.Length; i++)
                 {
-                    directoryList.Add(fileContent[i]);
+                    if(Directory.Text == "")
+                    {
+                        Directory.Text = fileContent[i];
+                    }    
+                    else
+                        Directory.Text += '\n' + fileContent[i];
                 }
                 MessageBox.Show("Đã cập nhật danh sách các đường dẫn bài viết", "Thông báo");
             }
@@ -99,50 +103,32 @@ namespace DATH_IT008.UserControl
         }
         private void FinishClick(object sender, RoutedEventArgs e)
         {
-            if (userChoice == null)
+            if (Directory.Text == "")
             {
-                MessageBox.Show("Vui lòng chọn thả like hoặc hủy like", "Thông báo");
+                MessageBox.Show("Vui lòng nhập đường dẫn!", "Thông báo");
             }
             else
             {
-                if (!Directory.IsEnabled)
+                foreach (var item in Directory.Text.Split('\n'))
                 {
-                    userChoice = ((ComboBoxItem)Cb_choose.SelectedItem).Content.ToString();
-                    if (userChoice == "Tùy chọn 1")
+                    directoryList.Add(item);
+                }
+                userChoice = ((ComboBoxItem)Cb_choose.SelectedItem).Content.ToString();
+                if (userChoice == "Tùy chọn 1")
+                {
+                    for (int i = 0; i < chromedrivers.Count; i++)
                     {
-                        for (int i = 0; i < chromedrivers.Count; i++)
-                        {
-                            like_unlike(chromedrivers[i], directoryList, "Like");
-                        }
-                    }
-                    else
-                    {
-                        for (int i = 0; i < chromedrivers.Count; i++)
-                        {
-                            like_unlike(chromedrivers[i], directoryList, "Unlike");
-                        }
+                        like_unlike(chromedrivers[i], directoryList, "Like");
                     }
                 }
                 else
                 {
-                    List<string> dirforone = new List<string>();
-                    dirforone.Add(Directory.Text);
-                    userChoice = ((ComboBoxItem)Cb_choose.SelectedItem).Content.ToString();
-                    if (userChoice == "Tùy chọn 1")
+                    for (int i = 0; i < chromedrivers.Count; i++)
                     {
-                        for (int i = 0; i < chromedrivers.Count; i++)
-                        {
-                            like_unlike(chromedrivers[i], dirforone, "Like");
-                        }
+                        like_unlike(chromedrivers[i], directoryList, "Unlike");
                     }
-                    else
-                    {
-                        for (int i = 0; i < chromedrivers.Count; i++)
-                        {
-                            like_unlike(chromedrivers[i], dirforone, "Unlike");
-                        }
-                    }
-                }    
+                
+                }
             }
         }
     }

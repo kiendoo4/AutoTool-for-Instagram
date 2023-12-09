@@ -56,7 +56,6 @@ namespace DATH_IT008.UserControl
         }
         private void ChooseDirectoryUserClick(object sender, RoutedEventArgs e)
         {
-            DirectoryUser.IsEnabled = false;
             directoryUserList = new List<string>();
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -71,7 +70,14 @@ namespace DATH_IT008.UserControl
                 string[] fileContent = System.IO.File.ReadAllLines(textFilePath);
                 for (int i = 0; i < fileContent.Length; i++)
                 {
-                    directoryUserList.Add(fileContent[i]);
+                    if (DirectoryUser.Text == "")
+                    {
+                        DirectoryUser.Text = fileContent[i];
+                    }
+                    else
+                    {
+                        DirectoryUser.Text = DirectoryUser.Text + '\n' + fileContent[i];
+                    }    
                 }
                 MessageBox.Show("Đã cập nhật danh sách các user", "Thông báo");
             }
@@ -82,99 +88,48 @@ namespace DATH_IT008.UserControl
         }
         private void FinishClick(object sender, RoutedEventArgs e)
         {
-            if (userChoice == null)
+            if (DirectoryUser.Text == "")
             {
-                MessageBox.Show("Vui lòng chọn follow hoặc unfollow", "Thông báo");
+                MessageBox.Show("Vui lòng nhập các username", "Thông báo");
             }
             else
             {
-                if (!DirectoryUser.IsEnabled)
+                userChoice = ((ComboBoxItem)Cb_choose.SelectedItem).Content.ToString();
+                foreach (var sthUrl in DirectoryUser.Text.Split('\n'))
                 {
-                    userChoice = ((ComboBoxItem)Cb_choose.SelectedItem).Content.ToString();
-                    if (userChoice == "Tùy chọn 1")
+                    directoryUserList.Add(sthUrl);
+                }
+                if (userChoice == "Tùy chọn 1")
+                {
+                    for (int i = 0; i < chromedrivers.Count; i++)
                     {
-                        for (int i = 0; i < chromedrivers.Count; i++)
+                        for (int j = 0; j < directoryUserList.Count; j++)
                         {
-                            for (int j = 0; j < directoryUserList.Count; j++)
+                            chromedrivers[i].Navigate().GoToUrl($"https://www.instagram.com/{directoryUserList[j]}/");
+                            Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+                            try
                             {
-                                chromedrivers[i].Navigate().GoToUrl($"https://www.instagram.com/{directoryUserList[j]}/");
-                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
-                                try
+                                var button = chromedrivers[i].FindElement(By.CssSelector("button[class=' _acan _acap _acas _aj1- _ap30']"));
+                                if (button != null)
                                 {
-                                    var button = chromedrivers[i].FindElement(By.CssSelector("button[class=' _acan _acap _acas _aj1- _ap30']"));
-                                    if (button != null)
-                                    {
-                                        button.Click();
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    continue;
+                                    button.Click();
                                 }
                             }
-                        }
-                        MessageBox.Show("Unfollow thành công", "Thông báo");
-                    }
-                    else
-                    {
-                        for (int i = 0; i < chromedrivers.Count; i++)
-                        {
-                            for (int j = 0; j < directoryUserList.Count; j++)
+                            catch (Exception ex)
                             {
-                                chromedrivers[i].Navigate().GoToUrl($"https://www.instagram.com/{directoryUserList[j]}/");
-                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
-                                var a = chromedrivers[i].FindElement(By.XPath("//button[contains(@class,'_acan _acap _acat _aj1- _ap30')]"));
-                                try
-                                {
-                                    if (a != null)
-                                    {
-                                        a.Click();
-                                        Thread.Sleep(3000);
-                                        a = chromedrivers[i].FindElement(By.XPath("//span[contains(text(),'Unfollow')]"));
-                                        a.Click();
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    continue;
-                                }
+                                continue;
                             }
                         }
-                        MessageBox.Show("Unfollow thành công", "Thông báo");
                     }
+                    MessageBox.Show("Unfollow thành công", "Thông báo");
                 }
                 else
                 {
-                    userChoice = ((ComboBoxItem)Cb_choose.SelectedItem).Content.ToString();
-                    if (userChoice == "Tùy chọn 1")
+                    for (int i = 0; i < chromedrivers.Count; i++)
                     {
-                        for (int i = 0; i < chromedrivers.Count; i++)
+                        for (int j = 0; j < directoryUserList.Count; j++)
                         {
-                            for (int j = 0; j < directoryUserList.Count; j++)
-                            {
-                                chromedrivers[i].Navigate().GoToUrl($"https://www.instagram.com/{DirectoryUser.Text}/");
-                                Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
-                                try
-                                {
-                                    var button = chromedrivers[i].FindElement(By.CssSelector("button[class=' _acan _acap _acas _aj1- _ap30']"));
-                                    if (button != null)
-                                    {
-                                        button.Click();
-                                    }
-                                }
-                                catch (Exception ex)
-                                {
-                                    continue;
-                                }
-                            }
-                        }
-                        MessageBox.Show("Unfollow thành công", "Thông báo");
-                    }
-                    else
-                    {
-                        for (int i = 0; i < chromedrivers.Count; i++)
-                        {
-                            chromedrivers[i].Navigate().GoToUrl($"https://www.instagram.com/{DirectoryUser.Text}/");
+                            chromedrivers[i].Navigate().GoToUrl($"https://www.instagram.com/{directoryUserList[j]}/");
                             Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
                             var a = chromedrivers[i].FindElement(By.XPath("//button[contains(@class,'_acan _acap _acat _aj1- _ap30')]"));
                             try
@@ -192,12 +147,10 @@ namespace DATH_IT008.UserControl
                                 continue;
                             }
                         }
-                        MessageBox.Show("Unfollow thành công", "Thông báo");
                     }
-                }    
+                    MessageBox.Show("Unfollow thành công", "Thông báo");
+                }
             }
         }
-
-        
     }
 }

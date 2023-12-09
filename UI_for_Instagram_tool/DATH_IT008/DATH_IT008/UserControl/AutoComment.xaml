@@ -14,12 +14,29 @@
                     <RowDefinition Height="5*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Content="Tự động bình luận" FontFamily="Paytone One" FontSize="21" Margin="16,18,82,0"/>
-                <Label Grid.Row="1" Content="Paste đường dẫn để tự động bình luận:" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,14,30,210"/>
-                <TextBox Name="Directory" FontFamily="Quicksand Semibold" FontSize="18" Margin="20,58,30,207" Grid.Row="1"/>
-                <Label Grid.Row="1" Content="hoặc" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,121,373,135"/>
-                <Button Click="ChooseDirectiryClick" Grid.Row="1" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="82,120,0,0">
-
+                <Label Grid.Row="0" Content="Tự động bình luận" FontFamily="Paytone One" FontSize="21" Margin="16,10,225,8"/>
+                <ComboBox Name="Cb_choose" FontSize="18" FontFamily="Quicksand Semibold" Grid.Row="0" SelectionChanged="myComboBox_SelectionChanged" Margin="230,13,50,19">
+                    <ComboBoxItem Content="cho user">
+                        <ComboBoxItem.Style>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="FontFamily" Value="Quicksand Semibold"/>
+                            </Style>
+                        </ComboBoxItem.Style>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="cho bài viết">
+                        <ComboBoxItem.Style>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="FontFamily" Value="Quicksand Semibold"/>
+                            </Style>
+                        </ComboBoxItem.Style>
+                    </ComboBoxItem>
+                </ComboBox>
+                <Label Name="Label1op1" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,46,30,242" Grid.RowSpan="2"/>
+                <TextBox VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Name="Directory" FontFamily="Quicksand Semibold" FontSize="18" Margin="20,24,30,201" Grid.Row="1"/>
+                <Label Grid.Row="1" Content="hoặc" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,106,373,150"/>
+                <Button Click="ChooseDirectiryClick" Grid.Row="1" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="82,105,0,0">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border CornerRadius="10" BorderThickness="0">
@@ -44,9 +61,9 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Label Grid.Row="1" Content="chứa đường dẫn và" FontSize="18" FontFamily="Quicksand Semibold" Margin="208,124,30,132"/>
-                <Label Grid.Row="1" Content="chứa danh sách các comment" FontSize="18" FontFamily="Quicksand Semibold" Margin="152,174,22,81"/>
-                <Button Click="ChooseCommentList" Grid.Row="1" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="24,174,0,0">
+                <Label Grid.Row="1" Content="chứa đường dẫn." FontSize="18" FontFamily="Quicksand Semibold" Margin="208,107,30,149"/>
+                <Label Grid.Row="1" Content="chứa danh sách comment." FontSize="18" FontFamily="Quicksand Semibold" Margin="206,260,10,59" Grid.RowSpan="2"/>
+                <Button Click="ChooseCommentList" Grid.Row="1" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="80,258,0,0">
 
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
@@ -71,6 +88,8 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
+                <Label Grid.Row="2" Name="LabelSLUser" FontSize="18" FontFamily="Quicksand Semibold" Content="Số lượng bài viết cmt: " Margin="20,13,230,0" Height="46" VerticalAlignment="Top"></Label>
+                <TextBox Name="SLUser" Grid.Row="2" FontSize="18" FontFamily="Quicksand Semibold" Margin="218,11,181,14" ></TextBox>
                 <Button Name="FinishButton" Click="FinishClick" Grid.Row="3" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="302,10,0,0">
 
                     <Button.Template>
@@ -96,6 +115,9 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
+                <TextBox VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Name="Comment" FontFamily="Quicksand Semibold" FontSize="18" Margin="20,179,30,46" Grid.Row="1"/>
+                <Label Content="Nhập danh sách các comment bạn muốn:" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,144,30,81" Grid.Row="1"/>
+                <Label Grid.Row="1" Content="hoặc" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,262,373,58" Grid.RowSpan="2"/>
             </Grid>
 
         </Border>

@@ -20,6 +20,7 @@ using System.Windows.Shapes;
 using OpenQA.Selenium.Support;
 using SeleniumExtras.WaitHelpers;
 using System.Net.Http;
+using Microsoft.Office.Interop.Excel;
 
 namespace DATH_IT008.UserControl
 {
@@ -28,27 +29,39 @@ namespace DATH_IT008.UserControl
     /// </summary>
     public partial class AutoComment
     {
-        bool check1 = false, check2 = false;
+        string userChoice = null;
         List<ChromeDriver> chromedrivers = new List<ChromeDriver>(); 
         List<string> commentList = new List<string>();
         List<string> directoryList = new List<string>();
         public AutoComment()
         {
             InitializeComponent();
+            Cb_choose.SelectedIndex = 0;
         }
         public AutoComment(MainWindow mainWindow)
         {
             InitializeComponent();
             chromedrivers = mainWindow.chromedrivers;
+            Cb_choose.SelectedIndex = 0;
         }
         private void FinishClick(object sender, RoutedEventArgs e)
         {
-            if(!check1 || !check2)
+            if(Comment.Text == ""|| Directory.Text=="")
             {
-                MessageBox.Show("Vui lòng chọn đầy đủ đường dẫn và comment", "Thông báo");
+                MessageBox.Show("Vui lòng nhập đầy đủ đường dẫn và comment", "Thông báo");
             }    
             else
             {
+                commentList = new List<string>();
+                directoryList = new List<string>();
+                foreach (var item in Comment.Text.Split('\n'))
+                {
+                    commentList.Add(item);
+                }    
+                foreach (var item in Directory.Text.Split('\n'))
+                {
+                    directoryList.Add(item);
+                }    
                 Random random = new Random();
                 for (int i = 0; i < directoryList.Count; i++)
                 {
@@ -75,7 +88,7 @@ namespace DATH_IT008.UserControl
                             }
                             catch
                             {
-                                MessageBox.Show("Not found");
+                                continue;
                             }
                         }
                         finally
@@ -101,12 +114,12 @@ namespace DATH_IT008.UserControl
                 string[] fileContent = System.IO.File.ReadAllLines(textFilePath);
                 for (int i = 0; i < fileContent.Length; i++)
                 {
-                    commentList.Add(fileContent[i]);
+                    if (Comment.Text == "")
+                        Comment.Text = fileContent[i];
+                    else
+                        Comment.Text = Comment.Text + '\n' + fileContent[i]; 
                 }
                 MessageBox.Show("Đã cập nhật danh sách comment", "Thông báo");
-                check1 = true;
-                if (check1 && check2)
-                    FinishButton.IsEnabled = true;
             }
             else
             {
@@ -128,16 +141,33 @@ namespace DATH_IT008.UserControl
                 string[] fileContent = System.IO.File.ReadAllLines(textFilePath);
                 for (int i = 0; i < fileContent.Length; i++)
                 {
-                    directoryList.Add(fileContent[i]);
+                    if (Directory.Text == "")
+                        Directory.Text = fileContent[i];
+                    else
+                        Directory.Text = Directory.Text + '\n' + fileContent[i];
                 }
                 MessageBox.Show("Đã cập nhật danh sách đường dẫn", "Thông báo");
-                check2 = true;
-                if (check1 && check2)
-                    FinishButton.IsEnabled = true;
             }
             else
             {
                 MessageBox.Show("Hủy thực thi", "Thông báo");
+            }
+        }
+
+        private void myComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            userChoice = ((ComboBoxItem)Cb_choose.SelectedItem).Content.ToString();
+            if (userChoice == "cho user")
+            {
+                Label1op1.Content = "Nhập các username để tự động bình luận";
+                LabelSLUser.Visibility = Visibility.Visible;
+                SLUser.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Label1op1.Content = "Nhập các url bài viết để tự động bình luận";
+                LabelSLUser.Visibility = Visibility.Hidden;
+                SLUser.Visibility = Visibility.Hidden;
             }
         }
     }

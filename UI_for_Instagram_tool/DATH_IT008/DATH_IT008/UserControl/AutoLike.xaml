@@ -36,10 +36,10 @@
                 </ComboBox>
                 <Label Name="LabelToShow" FontSize="18" FontFamily="Quicksand Semibold" Grid.Row="1" Margin="198,10,24,10"/>
                 <Label Grid.Row="1" Name ="Label1op1" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,54,30,226" Grid.RowSpan="2"/>
-                <TextBox Name="Directory" FontFamily="Quicksand Semibold" FontSize="18" Margin="20,38,30,187" Grid.Row="2"/>
-                <Label Grid.Row="2" Content="hoặc" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,94,373,133"/>
-                <Label Grid.Row="2" Content="chứa các link bài viết." FontSize="18" FontFamily="Quicksand Semibold" Margin="208,94,30,135"/>
-                <Button Click="ChooseDirectoryClick" Grid.Row="2" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="82,92,0,0">
+                <TextBox VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Name="Directory" FontFamily="Quicksand Semibold" FontSize="18" Margin="20,38,30,54" Grid.Row="2"/>
+                <Label Grid.Row="2" Content="hoặc" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,230,373,53" Grid.RowSpan="2"/>
+                <Label Grid.Row="2" Content="chứa các url bài viết." FontSize="18" FontFamily="Quicksand Semibold" Margin="200,228,38,1"/>
+                <Button Click="ChooseDirectoryClick" Grid.Row="2" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="74,226,0,0">
 
                     <Button.Template>
                         <ControlTemplate TargetType="Button">

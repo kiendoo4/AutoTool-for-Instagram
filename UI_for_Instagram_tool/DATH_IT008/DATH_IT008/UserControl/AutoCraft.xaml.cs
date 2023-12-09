@@ -44,21 +44,21 @@ namespace DATH_IT008.UserControl
         }
         private void ChooseDirectoryList(object sender, RoutedEventArgs e)
         {
-            directoryList = new List<string>();
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
                 Filter = "Text Files|*.txt|All Files|*.*", // Filter for text files
                 Title = "Chọn file txt"
             };
-
             // Show the dialog and check if the user clicked OK
             if (openFileDialog.ShowDialog() == true)
             {
                 string textFilePath = openFileDialog.FileName;
-                string[] fileContent = System.IO.File.ReadAllLines(textFilePath);
+                string[] fileContent = File.ReadAllLines(textFilePath);
                 for (int i = 0; i < fileContent.Length; i++)
                 {
-                    directoryList.Add(fileContent[i]);
+                    if(Urluser.Text == "")
+                        Urluser.Text = fileContent[i];
+                    else Urluser.Text = Urluser.Text + '\n' + fileContent[i];
                 }
                 MessageBox.Show("Đã cập nhật danh sách đường dẫn", "Thông báo");
                 check2 = true;
@@ -92,7 +92,7 @@ namespace DATH_IT008.UserControl
             }    
             //Kiểm tra đối tượng đã được crawl chưa
             string path = $"{saveDirr}\\{target}";
-            MessageBox.Show(path);
+            //MessageBox.Show(path);
             if (Directory.Exists(path))
             {
                 MessageBox.Show("Đối tượng đã tồn tại.");
@@ -132,7 +132,7 @@ namespace DATH_IT008.UserControl
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Lỗi:" + ex.Message, "Thông báo");
             }
             //Crawl ảnh và comment
             try
@@ -195,7 +195,7 @@ namespace DATH_IT008.UserControl
             {
                 MessageBox.Show(ex.Message);
             }
-            MessageBox.Show("Đã crawl xong", "Thông báo");
+            //
         }
 
         private void ChooseSaveFile(object sender, RoutedEventArgs e)
@@ -217,6 +217,10 @@ namespace DATH_IT008.UserControl
 
         private void FinishClick(object sender, RoutedEventArgs e)
         {
+            foreach (var sthUrl in Urluser.Text.Split('\n'))
+            {
+                directoryList.Add($"https://www.instagram.com/{sthUrl}/");
+            }
             ChromeDriver chromeDriver = (ChromeDriver)chromedrivers[0];
             for(int i = 0; i < directoryList.Count; i++)
             {
@@ -230,6 +234,7 @@ namespace DATH_IT008.UserControl
                     crawl(ref chromeDriver, 0, saveDir);
                 }    
             }
+            MessageBox.Show("Đã crawl xong", "Thông báo");
         }
     }
 }
