@@ -1,5 +1,6 @@
 ﻿using DATH_IT008.OtherWindows;
 using DATH_IT008.UserControl;
+using DATH_IT008.View;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -28,12 +29,22 @@ namespace DATH_IT008
         public MainWindow()
         {
             InitializeComponent();
+            leftGroup.CraftButton.ButtonClick += AutoCraftImage_Click;
+            leftGroup.CommentButton.ButtonClick += AutoCommentClick;
+            leftGroup.FLButton.ButtonClick += Follow_Unfollow_Click;
+            leftGroup.ReportButton.ButtonClick += ReportClick;
+            leftGroup.LikeUnlikeButton.ButtonClick += Auto_Like_Unlike_Button;
         }
 
         public MainWindow(Login login)
         {
             InitializeComponent();
             chromedrivers = login.chromedrivers;
+            leftGroup.CraftButton.ButtonClick += AutoCraftImage_Click;
+            leftGroup.CommentButton.ButtonClick += AutoCommentClick;
+            leftGroup.FLButton.ButtonClick += Follow_Unfollow_Click;
+            leftGroup.ReportButton.ButtonClick += ReportClick;
+            leftGroup.LikeUnlikeButton.ButtonClick += Auto_Like_Unlike_Button;
         }
         private void HideClick(object sender, RoutedEventArgs e)
         {
@@ -50,7 +61,7 @@ namespace DATH_IT008
             //App.Current.Shutdown();
         }
 
-        private void AutoCommentClick(object sender, RoutedEventArgs e)
+        private void AutoCommentClick(object sender, EventArgs e)
         {
             CurrentUC.Children.Clear();
             AutoComment autoComment = new AutoComment(this);
@@ -58,21 +69,21 @@ namespace DATH_IT008
             CurrentUC.Children.Add(autoComment);
         }
 
-        private void AutoCraftImage_Click(object sender, RoutedEventArgs e)
+        private void AutoCraftImage_Click(object sender, EventArgs e)
         {
+            ContentForUC.Visibility = Visibility.Hidden;
+            leftGroup.CraftButton.IsButtonPressed = true;
             CurrentUC.Children.Clear();
             AutoCraft autoCraft = new AutoCraft(this);
-            ContentForUC.Visibility = Visibility.Hidden;
+            
             CurrentUC.Children.Add(autoCraft);
         }
-
-
         private void PostClick(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void Follow_Unfollow_Click(object sender, RoutedEventArgs e)
+        private void Follow_Unfollow_Click(object sender, EventArgs e)
         {
             CurrentUC.Children.Clear();
             AutoFollow autoFollow = new AutoFollow(this);
@@ -80,7 +91,7 @@ namespace DATH_IT008
             CurrentUC.Children.Add(autoFollow);
         }
 
-        private void ReportClick(object sender, RoutedEventArgs e)
+        private void ReportClick(object sender, EventArgs e)
         {
             CurrentUC.Children.Clear();
             AutoReport autoReport = new AutoReport(this);
@@ -88,7 +99,7 @@ namespace DATH_IT008
             CurrentUC.Children.Add(autoReport);
         }
 
-        private void Auto_Like_Unlike_Button(object sender, RoutedEventArgs e)
+        private void Auto_Like_Unlike_Button(object sender, EventArgs e)
         {
             CurrentUC.Children.Clear();
             AutoLike autolike = new AutoLike(this);

@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="DATH_IT008.View.LeftOptions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DATH_IT008.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="315" d:DesignWidth="250">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="*">
+            </RowDefinition>
+            <RowDefinition Height ="*">
+            </RowDefinition>
+            <RowDefinition Height ="*">
+            </RowDefinition>
+            <RowDefinition Height ="*">
+            </RowDefinition>
+            <RowDefinition Height ="*">
+            </RowDefinition>
+            <RowDefinition Height ="*">
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <local:LeftOptionsPresentation x:Name="CraftButton" InnerImageSource="/Image/icons8-image-file-50.png" InnerText ="Tự động cào ảnh, comment" Grid.Row="0" />
+        <local:LeftOptionsPresentation x:Name="LikeUnlikeButton" InnerImageSource ="/Image/icons8-heart-50.png" InnerText ="Tự động thả like, unlike" Grid.Row="1"/>
+        <local:LeftOptionsPresentation x:Name="CommentButton" InnerImageSource ="/Image/icons8-comment-50.png" InnerText="Tự động bình luận" Grid.Row="2"/>
+        <local:LeftOptionsPresentation x:Name="FLButton" InnerImageSource ="/Image/icons8-add-user-male-50.png" InnerText ="Tự động follow/unfollow" Grid.Row="3"/>
+        <local:LeftOptionsPresentation x:Name="ReportButton" InnerImageSource ="/Image/icons8-notice-50.png" InnerText ="Tự động report" Grid.Row="4"/>
+        <local:LeftOptionsPresentation x:Name="PostButton" InnerImageSource ="/Image/icons8-post-64.png" InnerText ="Tự động đăng bài mới" Grid.Row="5"/>
+    </Grid>
+</UserControl>

@@ -3,12 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:leftGroup="clr-namespace:DATH_IT008.View"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent" 
-        Title="MainWindow" Height="500" Width="1000">
+        Title="MainWindow" Height="500" Width="1000"
+        Icon="/Image/icons8-instagram-reels-50.png">
     <Grid>
         <Border Background="#F8F7F8" CornerRadius="30" BorderThickness="1" BorderBrush="Gray">
             <Grid>
@@ -18,7 +20,7 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <!--<Label Grid.Row="0" Content="Auto-tool tương tác trên Instagram" FontSize="25" FontFamily="Paytone One" Margin="47,5,83,448"/>-->
-                    <Border Background="#FFFFFF" CornerRadius="30" BorderThickness="1" BorderBrush="Gray" Margin="40,52,10,28">
+                    <Border Background="#FFFFFF"  BorderThickness="1" BorderBrush="Gray" Margin="40,52,10,28">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="0.3*"></RowDefinition>
@@ -29,8 +31,8 @@
                                 <RowDefinition Height="4*"></RowDefinition>-->
                             </Grid.RowDefinitions>
                             <Label Grid.Row="0" Content="Auto-tool tương tác trên Insta" FontSize="25" FontFamily="Paytone One" Margin="24,10,37,0"/>
-                            <Grid Grid.Row="1">
-                                <Grid.RowDefinitions>
+                            <!--<Grid Grid.Row="1">-->
+                            <!--<Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
                                     <RowDefinition></RowDefinition>
@@ -43,6 +45,7 @@
                                         <ColumnDefinition Width="0.8*"></ColumnDefinition>
                                         <ColumnDefinition Width="0.2*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
+                                    
                                     <Label Grid.Column="0" Content="Tự động cào ảnh, comment" FontSize="21" FontFamily="Quicksand Semibold" Margin="24,10,10,6"/>
                                     <Button HorizontalAlignment="Left" Width="94" Height="42" VerticalAlignment="Center" Cursor="Hand" Margin="330,0,0,0" Grid.ColumnSpan="2" Click="AutoCraftImage_Click">
 
@@ -239,8 +242,12 @@
                                     </Button>
 
                                 </Grid>
-                            </Grid>
+                                -->
+                            <!--<leftGroup:LeftOptions Grid.Row="1"></leftGroup:LeftOptions>-->
+                            <!--
+                            </Grid>-->
 
+                            <leftGroup:LeftOptions Grid.Row="1" x:Name="leftGroup"></leftGroup:LeftOptions>
                         </Grid>
                     </Border>
 
@@ -268,7 +275,7 @@
                             </Button.Template>
                         </Button>
                     </StackPanel>
-                    <Border Grid.Row="1" Margin="10,0,25,25" CornerRadius="29" Background="#FFFFFF" BorderBrush="Gray" BorderThickness="1">
+                    <Border Margin="10,53,25,27" Background="#FFFFFF" BorderBrush="Gray" BorderThickness="1" Grid.RowSpan="2">
                         <TextBlock Name="ContentForUC" Foreground="Gray" Text="Click để hiển thị nội dung" FontFamily="Paytone One" FontSize="21" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
 
                     </Border>
