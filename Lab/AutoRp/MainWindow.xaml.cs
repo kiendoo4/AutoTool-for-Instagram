@@ -74,5 +74,32 @@ namespace AutoRp
             //close.Click();
 
         }
+
+        private void btn_rpp(object sender, RoutedEventArgs e)
+        {
+            ChromeDriverService chromeDriverService = ChromeDriverService.CreateDefaultService();
+            chromeDriverService.HideCommandPromptWindow = true;
+
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.AddArgument("--user-data-dir=C:\\Users\\PHAT PC\\AppData\\Local\\Google\\Chrome\\User Data\\");
+            chromeOptions.AddArgument("--profile-directory=Profile 3");
+
+            var driver = new ChromeDriver(chromeDriverService, chromeOptions);
+
+            driver.Navigate().GoToUrl("https://www.instagram.com/");
+            var link = tb_vllink.Text;
+
+            driver.Navigate().GoToUrl($"{link}");
+            Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+            var option = driver.FindElement(By.XPath("//div[@class='x9f619 xjbqb8w x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh x1n2onr6 x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x6s0dn4 x1oa3qoh xl56j7k']//*[name()='svg']"));
+            option.Click();
+            Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+            var report = driver.FindElement(By.XPath("//button[normalize-space()='Report']"));
+            report.Click();
+            Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
+            var spam = driver.FindElement(By.XPath("//div[@class='x1n2onr6 xzkaem6']//button[1]"));
+            spam.Click();
+
+        }
     }
 }

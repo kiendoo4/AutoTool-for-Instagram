@@ -13,14 +13,25 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <TextBlock Text="Nhập user cần report:" FontSize="21" FontFamily="PayTone One"></TextBlock>
-            <TextBox x:Name="tb_value" Height="50" FontSize="21" FontFamily="QuickSand" Text="luongdaiphat"></TextBox>
+            <TextBox x:Name="tb_value" Height="50" FontSize="21" FontFamily="QuickSand" Text="luongdaiphat" Margin="0,38,0,129"></TextBox>
+            <TextBlock Text="Nhập link bài viết"
+                       FontSize="21" Margin="0,123,0,-123"></TextBlock>
+            <TextBox x:Name="tb_vllink"
+                     Height="50"
+                     FontSize="21"
+                     Text="https://www.instagram.com/p/C0sa2czNBbz/?next=%2F" Margin="0,167,0,0"></TextBox>
         </Grid>
         <Grid Grid.Row="1">
             <Button 
-                    Content="Report" 
+                    Content="Report user" 
                     Width="100" 
                     Height="50" 
-                    Click="btn_rp"></Button>
+                    Click="btn_rp" Margin="130,79,570,88"></Button>
+            <Button Content="Report post"
+                    Width="100"
+                    Height="50"
+                    Click="btn_rpp" Margin="498,84,202,83">
+            </Button>
         </Grid>
     </Grid>
 </Window>
