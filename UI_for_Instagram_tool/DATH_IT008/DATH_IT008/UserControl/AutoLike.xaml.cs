@@ -99,7 +99,7 @@ namespace DATH_IT008.UserControl
                 }
             }
             Thread.Sleep(5000); // Check if the function includes this function works or not (for testing)
-            driver.Quit();
+            //driver.Quit();
         }
         private void FinishClick(object sender, RoutedEventArgs e)
         {

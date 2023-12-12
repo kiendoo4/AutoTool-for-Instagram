@@ -17,9 +17,9 @@
                 <Label Grid.Row="0" Content="Tự động cào ảnh" FontFamily="Paytone One" FontSize="21" Margin="16,9,82,9"/>
                 <Label Grid.Row="1" Content="Nhập số lượng ảnh mà bạn muốn cào:" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,6,30,218"/>
                 <TextBox Name="SL_Craft" FontFamily="Quicksand Semibold" FontSize="18" Margin="362,2,18,263" Grid.Row="1"/>
-                <Label Grid.Row="1" Content="Nhập các username của user bạn muốn craft:" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,82,30,142"/>
+                <Label Grid.Row="1" Content="Nhập các username của user bạn muốn crawl:" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,82,30,142"/>
                 <TextBox VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Name="Urluser" FontSize="18" FontFamily="Quicksand Semibold" Margin="24,118,18,104" Grid.Row="1"/>
-                <Label Grid.Row="1" Content="hoặc bỏ trống nếu bạn muốn cào tất cả hình." FontSize="18" FontFamily="Quicksand Semibold" Margin="20,47,30,209"/>
+                <Label Grid.Row="1" Content="hoặc bỏ trống nếu bạn muốn cào tất cả hình." FontSize="18" FontFamily="Quicksand Semibold" Margin="20,47,18,209"/>
                 <Label Grid.Row="1" Content="hoặc" FontSize="18" FontFamily="Quicksand Semibold" Margin="22,218,204,37"/>
 
                 <Button Click="ChooseSaveFile" Grid.Row="1" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="24,261,0,0">

@@ -121,7 +121,7 @@ namespace DATH_IT008.UserControl
                             }
                         }
                     }
-                    MessageBox.Show("Unfollow thành công", "Thông báo");
+                    MessageBox.Show("Follow thành công", "Thông báo");
                 }
                 else
                 {
