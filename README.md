@@ -3,7 +3,7 @@
  <h2 align="center"> (Auto-tool) Ứng dụng cho phép tương tác với Instagram </h2>
 
 <p align="center">
-  <img src="https://www.uit.edu.vn/sites/vi/files/images/Logos/Logo_UIT_Web.png" width="300" height="350" alt="Alt text">
+  <img src="[https://www.uit.edu.vn/sites/vi/files/images/Logos/Logo_UIT_Web.png](https://www.uit.edu.vn/sites/vi/files/banner_uit.png)" width="300" height="350" alt="Alt text">
 </p>
 
 
