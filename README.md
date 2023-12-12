@@ -28,7 +28,14 @@
 Để biết thêm thông tin về Auto Tool, vui lòng truy cập [Facebook](https://www.facebook.com/kiendoo4)
 
 
-**How to use**: Provide a way to install or clone/use.
+**How to use**: 
+
+Clone this repository into your local computer by this command (git required):
+<p>
+
+    git clone https://github.com/kiendoo4/IT008.git
+  
+</p>
 
 **Additional information**: 
 
