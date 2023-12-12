@@ -1,10 +1,10 @@
 ![UIT](https://img.shields.io/badge/from-UIT%20VNUHCM-blue?style=for-the-badge&link=https%3A%2F%2Fwww.uit.edu.vn%2F)
 
- ## (Auto-tool) Ứng dụng cho phép tương tác với instagram
+ ## (Auto-tool) Ứng dụng cho phép tương tác với Instagram
 
-<div style="display: flex; justify-content: center;">
+<p align="center">
   <img src="https://www.uit.edu.vn/sites/vi/files/images/Logos/Logo_UIT_Web.png" width="300" height="300" alt="Alt text">
-</div>
+</p>
 
 
 ## Contributors
