@@ -33,12 +33,28 @@
                             </Style>
                         </ComboBoxItem.Style>
                     </ComboBoxItem>
+                    <ComboBoxItem Content="Tùy chọn 3">
+                        <ComboBoxItem.Style>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="FontFamily" Value="Quicksand Semibold"/>
+                            </Style>
+                        </ComboBoxItem.Style>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="Tùy chọn 4">
+                        <ComboBoxItem.Style>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="FontFamily" Value="Quicksand Semibold"/>
+                            </Style>
+                        </ComboBoxItem.Style>
+                    </ComboBoxItem>
                 </ComboBox>
                 <Label Name="LabelToShow" FontSize="18" FontFamily="Quicksand Semibold" Grid.Row="1" Margin="198,10,24,10"/>
                 <Label Grid.Row="1" Name ="Label1op1" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,54,30,226" Grid.RowSpan="2"/>
                 <TextBox VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Name="Directory" FontFamily="Quicksand Semibold" FontSize="18" Margin="20,38,30,54" Grid.Row="2"/>
                 <Label Grid.Row="2" Content="hoặc" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,230,373,53" Grid.RowSpan="2"/>
-                <Label Grid.Row="2" Content="chứa các url bài viết." FontSize="18" FontFamily="Quicksand Semibold" Margin="200,228,38,1"/>
+                <Label Grid.Row="2" Name="Label2toshow"  FontSize="18" FontFamily="Quicksand Semibold" Margin="200,228,38,1"/>
                 <Button Click="ChooseDirectoryClick" Grid.Row="2" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="74,226,0,0">
 
                     <Button.Template>
@@ -65,7 +81,8 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-
+                <Label Grid.Row="3" Name="LabelSLUser" FontSize="18" FontFamily="Quicksand Semibold" Content="Sl post tương tác: " Margin="20,0,230,0" Height="46" VerticalAlignment="Center"/>
+                <TextBox Name="SLUser" Grid.Row="3" FontSize="18" FontFamily="Quicksand Semibold" Margin="200,6,190,14"/>
                 <Button Name="FinishButton" Click="FinishClick" Grid.Row="3" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="302,4,0,0">
 
                     <Button.Template>
