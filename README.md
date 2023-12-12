@@ -2,13 +2,15 @@
 
  ## (Auto-tool) Ứng dụng cho phép tương tác với instagram
 
-![image](https://github.com/kiendoo4/IT008/assets/93922753/da830e76-5b98-4000-a589-fb94d2e59465)
+<div style="display: flex; justify-content: center;">
+  <img src="https://www.uit.edu.vn/sites/vi/files/images/Logos/Logo_UIT_Web.png" width="300" height="300" alt="Alt text">
+</div>
 
 
 ## Contributors
 
-- Leader: Nguyễn Trung Kiên - 21521024 - [Github](https://github.com/kiendoo4/IT008.git).
-- Member: Phạm Quốc Việt - 21522792
+- Leader: Phạm Quốc Việt - 21522792 - [Github](https://github.com/kiendoo4/IT008.git).
+- Member: Nguyễn Trung Kiên - 21521024
 - Member: Trần Hoài An - 21520553
 - Member: Lường Đại Phát - 21522443
 
@@ -21,11 +23,12 @@
 ## Description
 
 Auto Tool Instagram is an automation tool that helps you save time and effort in managing your Instagram account. With Auto Tool, you can automatically perform the following tasks:
-- Automatically craw all photos / videos /  comments from a public user's profile.
+- Automatically craw all photos /  comments from a public user's profile.
 - Automatically like posts.
 - Automatically comment on posts.
 - Automatically follow / unfollow users from a predefined list.
 - Automatically report users / posts.
+- Automatically posts.
 
 To learn more about Auto Tool, please visit [Facebook](https://www.facebook.com/kiendoo4).
 
@@ -49,7 +52,7 @@ This is [Code of conducting](https://github.com/kiendoo4/IT008/blob/master/CODE_
 
 ## License
 
-Copyright © 2023 [kiendoo4](https://github.com/kiendoo4)
+Copyright © 2023 [kiendoo4, HakataCder, luongdaiphat, AnTran210](https://github.com/kiendoo4/IT008.git)
 
 This project is [MIT](https://github.com/kiendoo4/IT008/blob/master/LICENSE.txt) licensed
 

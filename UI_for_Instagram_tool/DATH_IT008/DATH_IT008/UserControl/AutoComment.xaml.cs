@@ -63,34 +63,26 @@ namespace DATH_IT008.UserControl
                     directoryList.Add(item);
                 }    
                 Random random = new Random();
-                for (int i = 0; i < directoryList.Count; i++)
+                foreach (ChromeDriver chromeDriver in chromedrivers)
                 {
-                    foreach (ChromeDriver chromeDriver in chromedrivers)
+                    WebDriverWait wait = new WebDriverWait(chromeDriver, TimeSpan.FromSeconds(10));
+                    for (int i = 0; i < directoryList.Count; i++)
                     {
                         chromeDriver.Navigate().GoToUrl(directoryList[i]);
-                        WebDriverWait wait = new WebDriverWait(chromeDriver, TimeSpan.FromSeconds(10));
-
+                        
                         // Wait until a condition is true
-                        //wait.Until(chromeDriver => ((IJavaScriptExecutor)chromeDriver).ExecuteScript("return document.readyState").Equals("complete"));
+                        wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("textarea[aria-label=\"Add a comment…\"]")));
                         try
                         {
                             try
                             {
                                 int randomNumber = random.Next(0, commentList.Count);
-                                IWebElement parentDiv = chromeDriver.FindElement(By.XPath("//*[@id=\"mount_0_0_F9\"]/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div[1]/div/div/div[2]/div/div[1]/div/article[1]/div/div[3]/div/div/div[4]"));
-
-                                // Find the form element within the parent div
-                                IWebElement form = parentDiv.FindElement(By.XPath("//*[@id=\"mount_0_0_F9\"]/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div[1]/div/div/div[2]/div/div[1]/div/article[1]/div/div[3]/div/div/div[5]/section/div/form"));
-
-                                //IWebElement buh = form.FindElement(By.XPath("/div[@class]"))
-
-                                // Find the textarea within the form
-                                IWebElement textarea = form.FindElement(By.XPath("//*[@id=\"mount_0_0_F9\"]/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div[1]/div/div/div[2]/div/div[1]/div/article[1]/div/div[3]/div/div/div[5]/section/div/form/div/textarea"));
-                                // Perform actions on the textarea
+                                IWebElement textarea = chromeDriver.FindElement(By.CssSelector("textarea[aria-label=\"Add a comment…\"]"));
                                 textarea.SendKeys(commentList[randomNumber]);
-                                //Thread.Sleep(1000);
-                                var button = parentDiv.FindElement(By.XPath("//*[@id=\"mount_0_0_F9\"]/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div[1]/div/div/div[2]/div/div[1]/div/article[1]/div/div[3]/div/div/div[5]/section/div/form/div/div[2]/div"));
+                                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//div[contains(text(),'Post')]")));
+                                var button = chromeDriver.FindElement(By.XPath("//div[contains(text(),'Post')]"));
                                 button.Click();
+                                //Thread.Sleep(1000);
                             }
                             catch (Exception ex)
                             {
