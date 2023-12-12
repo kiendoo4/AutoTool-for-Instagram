@@ -10,7 +10,7 @@
         AllowsTransparency="True"
         Background="Transparent" 
         Height="500" Width="1000"
-        Icon="/Image/icons8-instagram-reels-50.png">
+        Icon="/Image/icons8-instagram-64.png">
     <Grid>
         <Border Background="#F8F7F8" CornerRadius="30" BorderThickness="1" BorderBrush="Gray">
             <Grid>

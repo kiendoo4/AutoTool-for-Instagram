@@ -10,7 +10,7 @@
         AllowsTransparency="True"
         Background="Transparent" 
         Title="MainWindow" Height="500" Width="1000"
-        Icon="/Image/icons8-instagram-reels-50.png">
+        Icon="/Image/icons8-instagram-64.png">
     <Grid>
         <Border Background="#F8F7F8" CornerRadius="30" BorderThickness="1" BorderBrush="Gray">
             <Grid>
@@ -30,7 +30,7 @@
                                 <RowDefinition Height="4*"></RowDefinition>
                                 <RowDefinition Height="4*"></RowDefinition>-->
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="0" Content="Auto-tool tương tác trên Insta" FontSize="25" FontFamily="Paytone One" Margin="24,10,37,0"/>
+                            <Label Grid.Row="0" Content="Auto-tool tương tác trên Insta" FontSize="25" FontFamily="Paytone One" Margin="26,10,35,0"/>
                             <!--<Grid Grid.Row="1">-->
                             <!--<Grid.RowDefinitions>
                                     <RowDefinition></RowDefinition>
