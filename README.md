@@ -9,8 +9,8 @@
 
 ## Contributors
 
-- Leader: Nguyễn Trung Kiên - 21521024 - [Github](https://github.com/kiendoo4/IT008.git).
-- Member: Phạm Quốc Việt - 21522792
+- Leader: Phạm Quốc Việt - 21522792 - [Github](https://github.com/kiendoo4/IT008.git).
+- Member: Nguyễn Trung Kiên - 21521024
 - Member: Trần Hoài An - 21520553
 - Member: Lường Đại Phát - 21522443
 
@@ -52,7 +52,7 @@ This is [Code of conducting](https://github.com/kiendoo4/IT008/blob/master/CODE_
 
 ## License
 
-Copyright © 2023 [kiendoo4](https://github.com/kiendoo4)
+Copyright © 2023 [kiendoo4, HakataCder, luongdaiphat, AnTran210](https://github.com/kiendoo4/IT008.git)
 
 This project is [MIT](https://github.com/kiendoo4/IT008/blob/master/LICENSE.txt) licensed
 
