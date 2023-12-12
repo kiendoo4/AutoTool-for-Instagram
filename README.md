@@ -39,7 +39,9 @@ Clone this repository into your local computer by this command (git required):
   
 </p>
 
-**Additional information**: 
+## Additional information: 
+
+Thank you for using the AutoTool Instagram. We are happy to know that you are satisfied with our products. We're always working to improve our app, and your feedback is important to us.
 
 ## Code of conducting: 
 
