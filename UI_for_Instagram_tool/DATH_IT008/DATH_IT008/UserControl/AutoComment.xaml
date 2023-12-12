@@ -61,7 +61,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Label Grid.Row="1" Content="chứa đường dẫn." FontSize="18" FontFamily="Quicksand Semibold" Margin="208,107,30,149"/>
+                <Label Name="label2toshow" Grid.Row="1" FontSize="18" FontFamily="Quicksand Semibold" Margin="208,107,30,149"/>
                 <Label Grid.Row="1" Content="chứa danh sách comment." FontSize="18" FontFamily="Quicksand Semibold" Margin="206,260,10,59" Grid.RowSpan="2"/>
                 <Button Click="ChooseCommentList" Grid.Row="1" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="80,258,0,0">
 

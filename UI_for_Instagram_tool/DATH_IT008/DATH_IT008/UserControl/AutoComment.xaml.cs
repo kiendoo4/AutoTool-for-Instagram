@@ -45,6 +45,7 @@ namespace DATH_IT008.UserControl
             chromedrivers = mainWindow.chromedrivers;
             Cb_choose.SelectedIndex = 0;
             SLUser.Text = "1";
+            label2toshow.Content = "chứa các username.";
         }
         private void FinishClick(object sender, RoutedEventArgs e)
         {
@@ -305,12 +306,14 @@ namespace DATH_IT008.UserControl
             if (userChoice == "cho user")
             {
                 Label1op1.Content = "Nhập các username để tự động bình luận";
+                label2toshow.Content = "chứa các username.";
                 LabelSLUser.Visibility = Visibility.Visible;
                 SLUser.Visibility = Visibility.Visible;
             }
             else
             {
                 Label1op1.Content = "Nhập các url bài viết để tự động bình luận";
+                label2toshow.Content = "chứa các url bài viết.";
                 LabelSLUser.Visibility = Visibility.Hidden;
                 SLUser.Visibility = Visibility.Hidden;
             }
