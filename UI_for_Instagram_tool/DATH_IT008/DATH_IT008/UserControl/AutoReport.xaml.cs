@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using static System.Windows.Forms.LinkLabel;
 
 namespace DATH_IT008.UserControl
 {
@@ -147,7 +148,7 @@ namespace DATH_IT008.UserControl
                     {
                         for (int j = 0; j < directoryUserList.Count; j++)
                         {
-                            chromedrivers[i].Navigate().GoToUrl($"{directoryUserList[j]}/");
+                            chromedrivers[i].Navigate().GoToUrl($"{directoryUserList[j]}");
                             Thread.Sleep(TimeSpan.FromSeconds(new Random().Next(3, 8)));
                             var option = chromedrivers[i].FindElement(By.XPath("//div[@class='x9f619 xjbqb8w x78zum5 x168nmei x13lgxp2 x5pf9jr xo71vjh x1n2onr6 x1plvlek xryxfnj x1c4vz4f x2lah0s xdt5ytf xqjyukv x6s0dn4 x1oa3qoh xl56j7k']//*[name()='svg']"));
                             option.Click();

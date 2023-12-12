@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -73,7 +73,7 @@ namespace DATH_IT008.OtherWindows
                 //this.Close();
             }
             return false;
-            
+
         }
         private void LoginClick(object sender, RoutedEventArgs e)
         {
@@ -86,7 +86,7 @@ namespace DATH_IT008.OtherWindows
                 chromedrivers.Add(driver);
                 try
                 {
-                    if(login(username, password, driver))
+                    if (login(username, password, driver))
                     {
                         MainWindow mainWindow = new MainWindow(this);
                         mainWindow.Show();
@@ -110,9 +110,9 @@ namespace DATH_IT008.OtherWindows
             }
             else
             {
-                
+
                 bool check_open = false;
-                for(int i = 0; i < acc_username.Count; i++)
+                for (int i = 0; i < acc_username.Count; i++)
                 {
                     username = acc_username[i];
                     password = acc_password[i];
@@ -121,14 +121,14 @@ namespace DATH_IT008.OtherWindows
                     driver2.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
                     try
                     {
-                        if(login(username, password, driver2)) check_open = true;
+                        if (login(username, password, driver2)) check_open = true;
                     }
                     catch
                     {
                         driver2.Quit();
                     }
                 }
-                if(check_open)
+                if (check_open)
                 {
                     MainWindow mainWindow = new MainWindow(this);
                     mainWindow.Show();
@@ -186,4 +186,3 @@ namespace DATH_IT008.OtherWindows
         }
     }
 }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
