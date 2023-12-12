@@ -47,5 +47,7 @@ This is [Code of conducting](https://github.com/kiendoo4/IT008/blob/master/CODE_
 
 ## License: 
 
+Copyright © 2023 [kiendoo4](https://github.com/kiendoo4)
+
 This project is [MIT](https://github.com/kiendoo4/IT008/blob/master/LICENSE.txt) licensed
 
