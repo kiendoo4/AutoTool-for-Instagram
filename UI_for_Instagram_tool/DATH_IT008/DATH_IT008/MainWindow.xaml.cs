@@ -34,6 +34,7 @@ namespace DATH_IT008
             leftGroup.FLButton.ButtonClick += Follow_Unfollow_Click;
             leftGroup.ReportButton.ButtonClick += ReportClick;
             leftGroup.LikeUnlikeButton.ButtonClick += Auto_Like_Unlike_Button;
+            leftGroup.PostButton.ButtonClick += PostClick;
         }
 
         public MainWindow(Login login)
@@ -75,12 +76,15 @@ namespace DATH_IT008
             leftGroup.CraftButton.IsButtonPressed = true;
             CurrentUC.Children.Clear();
             AutoCraft autoCraft = new AutoCraft(this);
-            
             CurrentUC.Children.Add(autoCraft);
         }
-        private void PostClick(object sender, RoutedEventArgs e)
+        private void PostClick(object sender, EventArgs e)
         {
-
+            ContentForUC.Visibility = Visibility.Hidden;
+            leftGroup.CraftButton.IsButtonPressed = true;
+            CurrentUC.Children.Clear();
+            AutoPost autoPost = new AutoPost();
+            CurrentUC.Children.Add(autoPost);
         }
 
         private void Follow_Unfollow_Click(object sender, EventArgs e)

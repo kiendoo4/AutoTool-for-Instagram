@@ -36,7 +36,7 @@
                 </ComboBox>
                 <Label Name="LabelToShow" FontSize="18" FontFamily="Quicksand Semibold" Grid.Row="1" Margin="198,10,24,10"/>
                 <Label Grid.Row="1" Name ="Label1op1" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,54,30,226" Grid.RowSpan="2"/>
-                <TextBox Name="DirectoryUser" FontFamily="Quicksand Semibold" FontSize="18" Margin="20,38,30,52" Grid.Row="2"/>
+                <TextBox VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Name="DirectoryUser" FontFamily="Quicksand Semibold" FontSize="18" Margin="20,38,30,52" Grid.Row="2"/>
                 <Label Grid.Row="2" Content="hoặc" FontSize="18" FontFamily="Quicksand Semibold" Margin="20,224,373,3"/>
                 <Label Name="Label2ToShow" Grid.Row="2" Content="chứa các username." FontSize="18" FontFamily="Quicksand Semibold" Margin="208,226,30,3"/>
                 <Button Click="ChooseDirectoryUserClick" Grid.Row="2" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="82,224,0,0">
@@ -66,7 +66,7 @@
                     </Button.Template>
                 </Button>
 
-                <Button Name="FinishButton" Click="FinishClick" Grid.Row="3" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="302,10,0,0">
+                <Button Name="FinishButton" Click="FinishClick" Grid.Row="3" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="302,4,0,0">
 
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">

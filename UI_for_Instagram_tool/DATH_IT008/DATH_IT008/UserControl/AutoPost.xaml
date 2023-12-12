@@ -5,8 +5,127 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DATH_IT008.UserControl"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="450">
     <Grid>
-            
+        <Border Background="Transparent">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Content="Tự động đăng bài" FontFamily="Paytone One" FontSize="21" Margin="16,10,82,36" Grid.RowSpan="2"/>
+                <Label Name="LabelToShow" Content="Nhập sl ảnh cho mỗi bài viết, cách nhau: ' '" FontSize="18" FontFamily="Quicksand Semibold" Margin="24,48,30,12" Grid.RowSpan="2"/>
+                <TextBox Grid.Row="1" Margin="27,28,30,250" FontSize="18" FontFamily="Quicksand Semibold" Grid.RowSpan="2" ></TextBox>
+                <TextBox VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Name="CaptionList" FontFamily="Quicksand Semibold" FontSize="18" Margin="27,94,30,56" Grid.Row="2"/>
+                <Label Grid.Row="2" Name ="Label1op1" Content="và các ảnh đăng bài" FontSize="18" FontFamily="Quicksand Semibold" Margin="224,20,21,204"/>
+                <Button Click="ChooseDirectoryClick" Grid.Row="2" HorizontalAlignment="Left" Width="195" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="28,18,0,0">
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="10" BorderThickness="0">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#522c53"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="False">
+                                                <Setter Property="Background" Value="Purple"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <Grid>
+                                    <TextBlock Grid.Column="1" Text="Chọn folder directory"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0">
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button Name="FinishButton" Click="FinishClick" Grid.Row="3" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="302,4,0,0">
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border CornerRadius="10" BorderThickness="0">
+                                <Border.Style>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#522c53"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="False">
+                                                <Setter Property="Background" Value="Purple"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <Grid>
+                                    <TextBlock Grid.Column="1" Text="Hoàn tất" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0"/>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Label Grid.Row="2" Content="Nhập các caption (1 dòng - 1 bài viết, tối đa 10)" FontSize="18" FontFamily="Quicksand Semibold" Margin="24,56,23,168"/>
+                <Button HorizontalAlignment="Left" Width="140" Cursor="Hand" Click="ChooseAccountClick" Grid.Row="2" Margin="27,216,0,0" Height="38" VerticalAlignment="Top">
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border CornerRadius="10" BorderThickness="0">
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#522c53"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="False">
+                                                <Setter Property="Background" Value="Purple"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <Grid>
+                                    <TextBlock Grid.Column="1" Text="Chọn file excel"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0">
+                                    </TextBlock>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Label Grid.Row="2" Content="chứa username và password." FontSize="18" FontFamily="Quicksand Semibold" Margin="168,220,23,4"/>
+                <Button HorizontalAlignment="Left" Width="140" Cursor="Hand" Click="MoreOptionClick" Grid.Row="3" Margin="27,3,0,0" Height="38" VerticalAlignment="Top">
+
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border CornerRadius="10" BorderThickness="0">
+                                <Border.Style>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="LightGreen"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="False">
+                                                <Setter Property="Background" Value="Green"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <Grid>
+                                    <TextBlock Grid.Column="1" Text="Mở rộng"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Paytone One" FontSize="18" Foreground="White" Margin="1,0,0,0"/>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

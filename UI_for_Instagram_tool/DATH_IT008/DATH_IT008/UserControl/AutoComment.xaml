@@ -90,7 +90,7 @@
                 </Button>
                 <Label Grid.Row="2" Name="LabelSLUser" FontSize="18" FontFamily="Quicksand Semibold" Content="Số lượng bài viết cmt: " Margin="20,13,230,0" Height="46" VerticalAlignment="Top"></Label>
                 <TextBox Name="SLUser" Grid.Row="2" FontSize="18" FontFamily="Quicksand Semibold" Margin="218,11,181,14" ></TextBox>
-                <Button Name="FinishButton" Click="FinishClick" Grid.Row="3" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="302,10,0,0">
+                <Button Name="FinishButton" Click="FinishClick" Grid.Row="2" HorizontalAlignment="Left" Width="118" Height="36" VerticalAlignment="Top" Cursor="Hand" Margin="302,11,0,0">
 
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
