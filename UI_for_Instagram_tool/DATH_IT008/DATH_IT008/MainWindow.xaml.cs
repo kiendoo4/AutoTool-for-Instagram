@@ -46,6 +46,7 @@ namespace DATH_IT008
             leftGroup.FLButton.ButtonClick += Follow_Unfollow_Click;
             leftGroup.ReportButton.ButtonClick += ReportClick;
             leftGroup.LikeUnlikeButton.ButtonClick += Auto_Like_Unlike_Button;
+            leftGroup.PostButton.ButtonClick += PostClick;
         }
         private void HideClick(object sender, RoutedEventArgs e)
         {
