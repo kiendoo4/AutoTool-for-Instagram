@@ -7,7 +7,7 @@
 
 ## Contributors:
 
-- Leader: Nguyễn Trung Kiên - 21521024 - [Github]([https://github.com/vutuanhai237](https://github.com/kiendoo4/IT008.git))
+- Leader: Nguyễn Trung Kiên - 21521024 - [Github](https://github.com/kiendoo4/IT008.git).
 - Member: Phạm Quốc Việt - 21522792
 - Member: Trần Hoài An - 21520553
 - Member: Lường Đại Phát - 21522443
