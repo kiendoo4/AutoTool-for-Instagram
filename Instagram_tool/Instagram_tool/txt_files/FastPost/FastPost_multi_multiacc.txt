@@ -1,8 +1,0 @@
-﻿1 {
-image1.png@image2.png\true\true\false
-image3.png\false\false\true
-}
-
-2 {
-image4.png\Hello World bro\false\false\false
-}
