@@ -2,7 +2,9 @@
 
  ## (Auto-tool) Ứng dụng cho phép tương tác với instagram
 
-![image](https://github.com/kiendoo4/IT008/assets/93922753/da830e76-5b98-4000-a589-fb94d2e59465)
+<div style="display: flex; justify-content: center;">
+  <img src="https://www.uit.edu.vn/sites/vi/files/images/Logos/Logo_UIT_Web.png" width="300" height="300" alt="Alt text">
+</div>
 
 
 ## Contributors
