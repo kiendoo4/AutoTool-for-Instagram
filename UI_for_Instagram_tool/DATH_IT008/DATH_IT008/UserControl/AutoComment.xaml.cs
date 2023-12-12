@@ -21,6 +21,7 @@ using OpenQA.Selenium.Support;
 using SeleniumExtras.WaitHelpers;
 using System.Net.Http;
 using Microsoft.Office.Interop.Excel;
+using System.Net;
 
 namespace DATH_IT008.UserControl
 {
@@ -43,59 +44,206 @@ namespace DATH_IT008.UserControl
             InitializeComponent();
             chromedrivers = mainWindow.chromedrivers;
             Cb_choose.SelectedIndex = 0;
+            SLUser.Text = "1";
         }
         private void FinishClick(object sender, RoutedEventArgs e)
         {
-            if(Comment.Text == ""|| Directory.Text=="")
+            if (Cb_choose.Text == "cho bài viết")
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ đường dẫn và comment", "Thông báo");
-            }    
-            else
-            {
-                commentList = new List<string>();
-                directoryList = new List<string>();
-                foreach (var item in Comment.Text.Split('\n'))
+                if (Comment.Text == "" || Directory.Text == "")
                 {
-                    commentList.Add(item);
-                }    
-                foreach (var item in Directory.Text.Split('\n'))
+                    MessageBox.Show("Vui lòng nhập đầy đủ đường dẫn và comment", "Thông báo");
+                }
+                else
                 {
-                    directoryList.Add(item);
-                }    
-                Random random = new Random();
-                foreach (ChromeDriver chromeDriver in chromedrivers)
-                {
-                    WebDriverWait wait = new WebDriverWait(chromeDriver, TimeSpan.FromSeconds(10));
-                    for (int i = 0; i < directoryList.Count; i++)
+                    commentList = new List<string>();
+                    directoryList = new List<string>();
+                    foreach (var item in Comment.Text.Split('\n'))
                     {
-                        chromeDriver.Navigate().GoToUrl(directoryList[i]);
-                        
-                        // Wait until a condition is true
-                        wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("textarea[aria-label=\"Add a comment…\"]")));
-                        try
+                        commentList.Add(item);
+                    }
+                    foreach (var item in Directory.Text.Split('\n'))
+                    {
+                        directoryList.Add(item);
+                    }
+                    Random random = new Random();
+                    foreach (ChromeDriver chromeDriver in chromedrivers)
+                    {
+                        WebDriverWait wait = new WebDriverWait(chromeDriver, TimeSpan.FromSeconds(10));
+                        for (int i = 0; i < directoryList.Count; i++)
                         {
+                            chromeDriver.Navigate().GoToUrl(directoryList[i]);
+
+                            // Wait until a condition is true
+                            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("textarea[aria-label=\"Add a comment…\"]")));
                             try
                             {
-                                int randomNumber = random.Next(0, commentList.Count);
-                                IWebElement textarea = chromeDriver.FindElement(By.CssSelector("textarea[aria-label=\"Add a comment…\"]"));
-                                textarea.SendKeys(commentList[randomNumber]);
-                                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//div[contains(text(),'Post')]")));
-                                var button = chromeDriver.FindElement(By.XPath("//div[contains(text(),'Post')]"));
-                                button.Click();
-                                //Thread.Sleep(1000);
+                                try
+                                {
+                                    int randomNumber = random.Next(0, commentList.Count);
+                                    //IWebElement textarea = chromeDriver.FindElement(By.CssSelector("textarea[aria-label=\"Add a comment…\"]"));
+                                    //IWebElement textarea = chromeDriver.FindElement(By.TagName("textarea"));
+                                    ////textarea.SendKeys();
+                                    //textarea.SendKeys(commentList[randomNumber]);
+                                    //wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//div[contains(text(),'Post')]")));
+                                    //var button = chromeDriver.FindElement(By.XPath("//div[contains(text(),'Post')]"));
+                                    //button.Click();
+                                    //Thread.Sleep(1000);
+                                    chromeDriver.Navigate().GoToUrl(directoryList[i]);
+                                    wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("textarea[aria-label=\"Add a comment…\"]")));
+                                    var textarea = chromeDriver.FindElement(By.XPath("//textarea[@placeholder='Add a comment…']"));
+                                    try
+                                    {
+                                        textarea.SendKeys(commentList[randomNumber]);
+                                    }
+                                    catch
+                                    {
+                                        textarea = chromeDriver.FindElement(By.XPath("//textarea[@placeholder='Add a comment…']"));
+                                        textarea.SendKeys(commentList[randomNumber]);
+                                    }
+                                    var button = chromeDriver.FindElement(By.XPath("//div[contains(text(),'Post')]"));
+                                    button.Click();
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message);
+                                }
+                            }
+                            finally
+                            {
+
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (Comment.Text == "" || Directory.Text == "" || SLUser.Text == "")
+                {
+                    MessageBox.Show("Vui lòng nhập đầy đủ đường dẫn, comment và số lượng comment", "Thông báo");
+                }
+                else
+                {
+                    commentList = new List<string>();
+                    directoryList = new List<string>();
+                    foreach (var item in Comment.Text.Split('\n'))
+                    {
+                        commentList.Add(item);
+                    }
+                    foreach (var item in Directory.Text.Split('\n'))
+                    {
+                        directoryList.Add(item);
+                    }
+                    Random random = new Random();
+                    foreach (ChromeDriver chromeDriver in chromedrivers)
+                    {
+                        WebDriverWait wait = new WebDriverWait(chromeDriver, TimeSpan.FromSeconds(10));
+                        for (int i = 0; i < directoryList.Count; i++)
+                        {
+                            //MessageBox.Show(Convert.ToString(directoryList.Count));
+                            chromeDriver.Navigate().GoToUrl($"https://www.instagram.com/{directoryList[i]}");
+                            IWebElement check = wait.Until(ExpectedConditions.ElementIsVisible(By.TagName("article")));
+                            Thread.Sleep(1000);
+                            //Lấy tên target
+                            IWebElement post = chromeDriver.FindElement(By.TagName("main"));
+                            IWebElement targetName = post.FindElement(By.XPath(".//div/header/section/div[1]/a/h2"));
+                            string target = targetName.GetAttribute("innerText");
+                            post = post.FindElement(By.XPath(".//div/header/section/ul/li[1]/span/span"));
+                            string rawNum = post.GetAttribute("innerText");
+                            rawNum = new string(rawNum.Where(char.IsDigit).ToArray());
+                            int maxQuantity = Convert.ToInt32(rawNum);
+                            HashSet<string> urlBag = new HashSet<string>();
+                            try
+                            {
+                                IJavaScriptExecutor js = (IJavaScriptExecutor)chromeDriver;
+
+                                while (true)
+                                {
+                                    // Cuộn xuống cuối trang
+                                    js.ExecuteScript("window.scrollTo(0, document.body.scrollHeight);");
+                                    // Chờ một khoảng thời gian ngắn để trang web tải dữ liệu mới
+                                    System.Threading.Thread.Sleep(1000);
+                                    //lay cac element chua anh--------------------------------------------------
+                                    IWebElement article = chromeDriver.FindElement(By.TagName("article"));
+                                    Thread.Sleep(50);
+                                    List<IWebElement> href = article.FindElements(By.XPath(".//div[@class='_ac7v  _al3n']/div[@class='_aabd _aa8k  _al3l']/a")).ToList();
+                                    for (int k = 0; k < href.Count; k++)
+                                    {
+                                        string postUrl = href[k].GetAttribute("href");
+                                        urlBag.Add(postUrl);
+                                        Thread.Sleep(50);
+                                    }
+                                    if (urlBag.Count > Convert.ToInt32(SLUser.Text)) break;
+                                    // Kiểm tra xem đã đến cuối trang hay chưa
+                                    if (urlBag.Count >= maxQuantity) break;
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Lỗi:" + ex.Message, "Thông báo");
+                            }
+                            try
+                            {
+                                int count = 1;
+                                foreach (string url in urlBag)
+                                {
+                                    IJavaScriptExecutor jsExecutor = (IJavaScriptExecutor)chromeDriver;
+                                    jsExecutor.ExecuteScript($"window.open('{url}', '_blank');");
+                                    chromeDriver.SwitchTo().Window(chromeDriver.WindowHandles[1]);
+                                    //Chờ element chứa bài viết đã load xong
+                                    wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("textarea[aria-label=\"Add a comment…\"]")));
+                                    Thread.Sleep(50);
+                                    try
+                                    {
+                                        try
+                                        {
+                                            int randomNumber = random.Next(0, commentList.Count);
+                                            var textarea = chromeDriver.FindElement(By.CssSelector("textarea[aria-label=\"Add a comment…\"]"));
+                                            try
+                                            {
+                                                textarea.SendKeys(commentList[randomNumber]);
+                                            }
+                                            catch
+                                            {
+                                                textarea = chromeDriver.FindElement(By.XPath("//textarea[@placeholder='Add a comment…']"));
+                                                textarea.SendKeys(commentList[randomNumber]);
+                                            }
+                                            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//div[contains(text(),'Post')]")));
+                                            var button = chromeDriver.FindElement(By.XPath("//div[contains(text(),'Post')]"));
+                                            button.Click();
+
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            MessageBox.Show(ex.Message);
+                                            chromeDriver.Close();
+
+                                            chromeDriver.SwitchTo().Window(chromeDriver.WindowHandles[0]);
+                                        }
+                                    }
+                                    finally
+                                    {
+
+                                    }
+                                    Thread.Sleep(50);
+                                    chromeDriver.Close();
+                                    chromeDriver.SwitchTo().Window(chromeDriver.WindowHandles[0]);
+
+                                    count++;
+                                    if (count > Convert.ToInt32(SLUser.Text)) break;
+
+                                    Thread.Sleep(50);
+                                }
                             }
                             catch (Exception ex)
                             {
                                 MessageBox.Show(ex.Message);
                             }
                         }
-                        finally
-                        {
-                            
-                        }
                     }
                 }
-            }
+            }    
         }
 
         private void ChooseCommentList(object sender, RoutedEventArgs e)

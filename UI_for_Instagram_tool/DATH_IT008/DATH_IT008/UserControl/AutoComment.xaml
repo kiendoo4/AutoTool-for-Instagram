@@ -15,7 +15,7 @@
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Content="Tự động bình luận" FontFamily="Paytone One" FontSize="21" Margin="16,10,225,8"/>
-                <ComboBox Name="Cb_choose" FontSize="18" FontFamily="Quicksand Semibold" Grid.Row="0" SelectionChanged="myComboBox_SelectionChanged" Margin="230,13,50,19">
+                <ComboBox Name="Cb_choose" FontSize="18" FontFamily="Quicksand Semibold" Grid.Row="0" SelectionChanged="myComboBox_SelectionChanged" Margin="230,16,50,16">
                     <ComboBoxItem Content="cho user">
                         <ComboBoxItem.Style>
                             <Style TargetType="ComboBoxItem">
