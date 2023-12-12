@@ -18,7 +18,15 @@
 
 **Video demo**: Link to youtube video
 
-**Description**: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+**Description**: Auto Tool là công cụ tự động hóa Instagram giúp bạn tiết kiệm thời gian và công sức trong việc quản lý tài khoản Instagram của mình. Với Auto Tool, bạn có thể tự động thực hiện các tác vụ sau:
+- Tự động cào tất cả ảnh / video/ comment của một user public
+- Tự động thả tim
+- Tự động bình luận
+- Tự động follow / unfollow danh sách cho trước.
+- Tự động report một user / bài viết
+
+Để biết thêm thông tin về Auto Tool, vui lòng truy cập [Facebook](https://www.facebook.com/kiendoo4)
+
 
 **How to use**: Provide a way to install or clone/use.
 
@@ -26,4 +34,6 @@
 
 **Code of conducting**: Add your code of conducting
 
-**License**: Add MIT/BSD-2 Clause/... license here
+**License**: 
+
+This project is [MIT](https://github.com/kiendoo4/IT008/blob/master/LICENSE.txt) licensed
