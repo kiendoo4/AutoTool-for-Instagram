@@ -23,11 +23,12 @@
 ## Description
 
 Auto Tool Instagram is an automation tool that helps you save time and effort in managing your Instagram account. With Auto Tool, you can automatically perform the following tasks:
-- Automatically craw all photos / videos /  comments from a public user's profile.
+- Automatically craw all photos /  comments from a public user's profile.
 - Automatically like posts.
 - Automatically comment on posts.
 - Automatically follow / unfollow users from a predefined list.
 - Automatically report users / posts.
+- Automatically posts.
 
 To learn more about Auto Tool, please visit [Facebook](https://www.facebook.com/kiendoo4).
 
