@@ -101,6 +101,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="OtherWindows\Extension.xaml.cs">
+      <DependentUpon>Extension.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\AutoComment.xaml.cs">
       <DependentUpon>AutoComment.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OtherWindows\Extension.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OtherWindows\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -248,6 +255,110 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\icons8-instagram-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="autoit_exe\Select_folder.exe" />
+    <Content Include="autoit_exe\Upload_all_files.exe" />
+    <Resource Include="txt_files\account.txt" />
+    <Resource Include="txt_files\captions.txt" />
+    <Resource Include="txt_files\FastPost\FastPost_indv_multiacc.txt" />
+    <Resource Include="txt_files\FastPost\FastPost_multi_multiacc.txt" />
+    <Resource Include="txt_files\FastPost\FastPost_multi_single.txt" />
+    <Resource Include="upload\image1.png" />
+    <Resource Include="upload\image10.png" />
+    <Resource Include="upload\image11.png" />
+    <Resource Include="upload\image12.png" />
+    <Resource Include="upload\image13.png" />
+    <Resource Include="upload\image14.png" />
+    <Resource Include="upload\image15.png" />
+    <Resource Include="upload\image16.png" />
+    <Resource Include="upload\image17.png" />
+    <Resource Include="upload\image18.png" />
+    <Resource Include="upload\image19.png" />
+    <Resource Include="upload\image2.png" />
+    <Resource Include="upload\image20.png" />
+    <Resource Include="upload\image21.png" />
+    <Resource Include="upload\image22.png" />
+    <Resource Include="upload\image23.png" />
+    <Resource Include="upload\image24.png" />
+    <Resource Include="upload\image25.png" />
+    <Resource Include="upload\image26.png" />
+    <Resource Include="upload\image27.png" />
+    <Resource Include="upload\image28.png" />
+    <Resource Include="upload\image29.png" />
+    <Resource Include="upload\image3.png" />
+    <Resource Include="upload\image30.png" />
+    <Resource Include="upload\image31.png" />
+    <Resource Include="upload\image32.png" />
+    <Resource Include="upload\image33.png" />
+    <Resource Include="upload\image34.png" />
+    <Resource Include="upload\image35.png" />
+    <Resource Include="upload\image36.png" />
+    <Resource Include="upload\image37.png" />
+    <Resource Include="upload\image38.png" />
+    <Resource Include="upload\image39.png" />
+    <Resource Include="upload\image4.png" />
+    <Resource Include="upload\image40.png" />
+    <Resource Include="upload\image41.png" />
+    <Resource Include="upload\image42.png" />
+    <Resource Include="upload\image43.png" />
+    <Resource Include="upload\image44.png" />
+    <Resource Include="upload\image45.png" />
+    <Resource Include="upload\image46.png" />
+    <Resource Include="upload\image47.png" />
+    <Resource Include="upload\image48.png" />
+    <Resource Include="upload\image49.png" />
+    <Resource Include="upload\image5.png" />
+    <Resource Include="upload\image50.png" />
+    <Resource Include="upload\image51.png" />
+    <Resource Include="upload\image52.png" />
+    <Resource Include="upload\image53.png" />
+    <Resource Include="upload\image54.png" />
+    <Resource Include="upload\image55.png" />
+    <Resource Include="upload\image56.png" />
+    <Resource Include="upload\image57.png" />
+    <Resource Include="upload\image58.png" />
+    <Resource Include="upload\image59.png" />
+    <Resource Include="upload\image6.png" />
+    <Resource Include="upload\image60.png" />
+    <Resource Include="upload\image61.png" />
+    <Resource Include="upload\image62.png" />
+    <Resource Include="upload\image63.png" />
+    <Resource Include="upload\image64.png" />
+    <Resource Include="upload\image65.png" />
+    <Resource Include="upload\image66.png" />
+    <Resource Include="upload\image67.png" />
+    <Resource Include="upload\image68.png" />
+    <Resource Include="upload\image69.png" />
+    <Resource Include="upload\image7.png" />
+    <Resource Include="upload\image70.png" />
+    <Resource Include="upload\image71.png" />
+    <Resource Include="upload\image72.png" />
+    <Resource Include="upload\image73.png" />
+    <Resource Include="upload\image74.png" />
+    <Resource Include="upload\image75.png" />
+    <Resource Include="upload\image76.png" />
+    <Resource Include="upload\image77.png" />
+    <Resource Include="upload\image78.png" />
+    <Resource Include="upload\image79.png" />
+    <Resource Include="upload\image8.png" />
+    <Resource Include="upload\image80.png" />
+    <Resource Include="upload\image81.png" />
+    <Resource Include="upload\image82.png" />
+    <Resource Include="upload\image83.png" />
+    <Resource Include="upload\image84.png" />
+    <Resource Include="upload\image85.png" />
+    <Resource Include="upload\image86.png" />
+    <Resource Include="upload\image87.png" />
+    <Resource Include="upload\image88.png" />
+    <Resource Include="upload\image89.png" />
+    <Resource Include="upload\image9.png" />
+    <Resource Include="upload\image90.png" />
+    <Resource Include="upload\image91.png" />
+    <Resource Include="upload\image92.png" />
+    <Resource Include="upload\image93.png" />
+    <Resource Include="upload\image94.png" />
+    <Resource Include="upload\image95.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.WebDriver.4.15.0\build\Selenium.WebDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.4.15.0\build\Selenium.WebDriver.targets')" />
