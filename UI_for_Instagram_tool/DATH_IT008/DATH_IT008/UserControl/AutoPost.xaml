@@ -70,7 +70,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Label Grid.Row="1" Content="Nhập các caption (1 dòng ứng với 1 bài viết)" FontSize="18" FontFamily="Quicksand Semibold" Margin="24,56,23,224" Grid.RowSpan="2"/>
+                <Label Grid.Row="1" Content="Nhập các caption tương ứng (1 dòng - 1 ảnh)" FontSize="18" FontFamily="Quicksand Semibold" Margin="24,56,23,224" Grid.RowSpan="2"/>
                 <Button HorizontalAlignment="Left" Width="140" Cursor="Hand" Click="ChooseAccountClick" Grid.Row="2" Margin="27,216,0,0" Height="38" VerticalAlignment="Top">
 
                     <Button.Template>

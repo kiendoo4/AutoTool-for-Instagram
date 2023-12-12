@@ -99,7 +99,7 @@ namespace DATH_IT008.UserControl
                         //int rand = num.Next(0, cnum);
                         foreach (var image_path in selectedImagePaths)
                         {
-                            lets_post(driver2, image_path, image_path, a, b);
+                            lets_post(driver2, image_path, CaptionList.Text, a, b);
                         }
                         driver2.Quit();
                         Thread.Sleep(5000);
@@ -191,14 +191,15 @@ namespace DATH_IT008.UserControl
             //process.Start();
             //Thread.Sleep(2000);
             //process.Close();
-            startInfo.FileName = "\\autoit_exe\\Upload_all_files.exe"; // change this to the same exe file if you use this function
-            startInfo.Arguments = upload_path;
-            process.StartInfo = startInfo;
-            process.Start();
-            Thread.Sleep(2000);
-            process.Close();
+            //startInfo.FileName = "\\autoit_exe\\Upload_all_files.exe"; // change this to the same exe file if you use this function
+            //startInfo.Arguments = upload_path;
+            //process.StartInfo = startInfo;
+            //process.Start();
+            //Thread.Sleep(2000);
+            //process.Close();
 
             // Click next button
+            Thread.Sleep(2000);
             var webbtn_next = driver.FindElement(By.XPath("//div[contains(text(),'Next')]"));
             webbtn_next.Click();
             Thread.Sleep(500);
