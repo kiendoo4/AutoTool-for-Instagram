@@ -2,9 +2,8 @@
 
 **(Auto-tool) Xây dựng ứng dụng cho phép tương tác với instagram**
 
-<p align="center">
-  <img width="460" height="300" src="[URL của ảnh](https://www.uit.edu.vn/sites/vi/files/images/Logos/Logo_UIT_Web.png)">
-</p>
+![image](https://github.com/kiendoo4/IT008/assets/93922753/da830e76-5b98-4000-a589-fb94d2e59465)
+
 
 **Contributors**:
 
