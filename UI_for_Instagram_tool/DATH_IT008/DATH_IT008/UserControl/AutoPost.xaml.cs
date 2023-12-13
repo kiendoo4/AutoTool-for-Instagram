@@ -191,12 +191,12 @@ namespace DATH_IT008.UserControl
             //process.Start();
             //Thread.Sleep(2000);
             //process.Close();
-            //startInfo.FileName = "\\autoit_exe\\Upload_all_files.exe"; // change this to the same exe file if you use this function
-            //startInfo.Arguments = upload_path;
-            //process.StartInfo = startInfo;
-            //process.Start();
-            //Thread.Sleep(2000);
-            //process.Close();
+            startInfo.FileName = "C:\\Users\\Admin\\Desktop\\New folder (16)\\IT008\\UI_for_Instagram_tool\\DATH_IT008\\DATH_IT008\\autoit_exe\\Upload_all_files.exe"; // change this to the same exe file if you use this function
+            startInfo.Arguments = upload_path;
+            process.StartInfo = startInfo;
+            process.Start();
+            Thread.Sleep(2000);
+            process.Close();
 
             // Click next button
             Thread.Sleep(2000);
@@ -241,7 +241,6 @@ namespace DATH_IT008.UserControl
         }
         private void lets_post(ChromeDriver driver, string image_path, string caption, bool hidelike, bool turnoffcmt)
         {
-            Thread.Sleep(5000);
             post(driver, image_path, caption, hidelike, turnoffcmt);
         }
         private void MoreOptionClick(object sender, RoutedEventArgs e)
