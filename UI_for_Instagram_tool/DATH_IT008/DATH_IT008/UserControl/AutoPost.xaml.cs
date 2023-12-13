@@ -27,6 +27,9 @@ using DATH_IT008.OtherWindows;
 using OpenQA.Selenium.Support.UI;
 using System.Diagnostics;
 using Microsoft.Office.Interop.Excel;
+using EnvDTE80;
+using Path = System.IO.Path;
+
 namespace DATH_IT008.UserControl
 {
     /// <summary>
@@ -191,7 +194,11 @@ namespace DATH_IT008.UserControl
             //process.Start();
             //Thread.Sleep(2000);
             //process.Close();
-            startInfo.FileName = "C:\\Users\\Admin\\Desktop\\New folder (16)\\IT008\\UI_for_Instagram_tool\\DATH_IT008\\DATH_IT008\\autoit_exe\\Upload_all_files.exe"; // change this to the same exe file if you use this function
+
+            string projectPath = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName;
+
+            string absoluteFilePath = projectPath + "\\autoit_exe\\Upload_all_files.exe";
+            startInfo.FileName = absoluteFilePath; // change this to the same exe file if you use this function
             startInfo.Arguments = upload_path;
             process.StartInfo = startInfo;
             process.Start();
@@ -230,7 +237,7 @@ namespace DATH_IT008.UserControl
             temp.Click();
 
             // Wait for uploading
-            WebDriverWait driverWait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            WebDriverWait driverWait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
             driverWait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//span[@class='x1lliihq x1plvlek xryxfnj x1n2onr6 x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye x1ms8i2q xo1l8bm x5n08af x2b8uid x4zkp8e xw06pyt x10wh9bi x1wdrske x8viiok x18hxmgj']")));
 
             // Close "create post"
