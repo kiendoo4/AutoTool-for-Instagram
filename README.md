@@ -38,7 +38,7 @@ Auto Tool Instagram is an automation tool that helps you save time and effort in
 - Automatically report users / posts.
 - Automatically posts.
 
-To learn more about Auto Tool, please visit [Facebook](https://www.facebook.com/kiendoo4).
+If you have any problems with our app, please contact Trung-Kien Nguyen via [Facebook](https://www.facebook.com/kiendoo4).
 
 
 <h3>How to use</h3>
